@@ -20,11 +20,15 @@ namespace Attendance_APP
             new NewRecord().ShowDialog(this);
         }
 
-
-
         private void EditRecord_Click(object sender, EventArgs e)
         {
             new EditRecord().ShowDialog(this);
+        }
+
+        private void Output_Click(object sender, EventArgs e)
+        {
+            var csvOutput = new ForOutput();
+            csvOutput.ShowDialog(this);
         }
     }
 }

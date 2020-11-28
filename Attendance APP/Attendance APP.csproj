@@ -46,22 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\EditRecord.cs">
+    <Compile Include="Form\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\EditRecord.Designer.cs">
+    <Compile Include="Form\SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\EditRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\EditRecord.Designer.cs">
       <DependentUpon>EditRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\EditRecordForm.cs">
+    <Compile Include="Form\EditRecordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\EditRecordForm.Designer.cs">
+    <Compile Include="Form\EditRecordForm.Designer.cs">
       <DependentUpon>EditRecordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\NewRecord.cs">
+    <Compile Include="Form\NewRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\NewRecord.Designer.cs">
+    <Compile Include="Form\NewRecord.Designer.cs">
       <DependentUpon>NewRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="Contorol\CmbDate.cs">
@@ -93,40 +99,34 @@
     <Compile Include="Dto\StampingTypeDto.cs" />
     <Compile Include="Dto\StampingDto.cs" />
     <Compile Include="Dto\EmployeeDto.cs" />
-    <Compile Include="Admin\AdminMenu.cs">
+    <Compile Include="Form\AdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\AdminMenu.Designer.cs">
+    <Compile Include="Form\AdminMenu.Designer.cs">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForOutput.cs">
+    <Compile Include="Form\ForOutput.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForOutput.Designer.cs">
+    <Compile Include="Form\ForOutput.Designer.cs">
       <DependentUpon>ForOutput.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stamping.cs">
+    <Compile Include="Form\Stamping.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stamping.Designer.cs">
+    <Compile Include="Form\Stamping.Designer.cs">
       <DependentUpon>Stamping.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\OutputFile.cs" />
-    <EmbeddedResource Include="Admin\AdminMenu.resx">
+    <EmbeddedResource Include="Form\AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\EditRecord.resx">
+    <EmbeddedResource Include="Form\EditRecord.resx">
       <DependentUpon>EditRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\NewRecord.resx">
+    <EmbeddedResource Include="Form\NewRecord.resx">
       <DependentUpon>NewRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contorol\CmbDate.resx">
@@ -138,14 +138,11 @@
     <EmbeddedResource Include="Contorol\CmbStampingType.resx">
       <DependentUpon>CmbStampingType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\EditRecordForm.resx">
+    <EmbeddedResource Include="Form\EditRecordForm.resx">
       <DependentUpon>EditRecordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForOutput.resx">
+    <EmbeddedResource Include="Form\ForOutput.resx">
       <DependentUpon>ForOutput.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -156,8 +153,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Stamping.resx">
+    <EmbeddedResource Include="Form\Stamping.resx">
       <DependentUpon>Stamping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
