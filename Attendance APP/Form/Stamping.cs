@@ -3,98 +3,70 @@ using Attendance_APP.Dto;
 using Attendance_APP.Util;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Text;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attendance_APP
 {
     public partial class Stamping : Form
     {
-        //ComboBoxにて表示・選択
-        //private List<EmployeeDto> EmployeeList { get; set; }
-        private List<StampingTypeDto> StampingTypeList { get; set; }
-        // 社員①の最新の打刻データ
+        private EmployeeDto Employee { get; set; }
         private StampingDto LatestStamping { get; set; }
 
-        public Stamping()
+        public Stamping(EmployeeDto employee)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            //cmbにて表示・選択
-            //this.EmployeeList = new EmployeeDao().GetAllEmployee();
-            this.StampingTypeList = new StampingTypeDao().GetAllStampingType();
-            //this.SetCmbEmployee();
-            //this.SetCmbStampingType();
-
+            this.Employee = employee;
+            // 社員名
+            lb_employee.Text = this.Employee.Name;
             // タイマー設定
             timer1.Interval = 1000;
             timer1.Enabled = true;
-            // ラベル設定  
-            //departmentName.Text = this.GetSelectedEmployeeDepartment().Name;
-            currentTime.Text = this.GetCurrentTime();
-            this.cmbEmployee1.StatusUpdated += new EventHandler(MyEventHandlerFunction_StatusUpdated);
-        }
-
-        public void MyEventHandlerFunction_StatusUpdated(object sender, EventArgs e)
-        {
+            lb_currentTime.Text = this.GetCurrentTime();
+            // 画面読み込み
             this.GetAttendanceOrLeaving();
-        }
 
-
-        private void GetAttendanceOrLeaving()
-        {
-            // DBより最新のデータ読み込み
-            this.LatestStamping = new StampingDao().GetLatestStamping(cmbEmployee1.GetSelectedEmployee().Code);
-            // 新規(最新データがnull)であれば出勤画面
-            // 既存で退勤時間が押されてあったら(退勤打刻が初期値でない)出勤画面
-            if (this.LatestStamping == null || LatestStamping.LeavingWork.CompareTo(new DateTime()) != 0)
-            {
-                StampingAttendance();
-            }
-            else
-            {
-                StampingLeaving();
-            }
-        }
-
-        // 出勤打刻画面
-        private void StampingAttendance()
-        {
-            // 退勤ボタン不可
-            StampBtn2.Enabled = false;
-        }
-
-        // 退勤打刻画面
-        private void StampingLeaving()
-        {
-            // cmb_stampingTypeに設定・表示
-            cmbStampingType1.SetLatestStampingType(this.LatestStamping);
-            // 出勤ボタン不可
-            stampBtn.Enabled = false;
         }
 
         // 現在時刻表示
-        private string GetCurrentTime() 
+        private string GetCurrentTime()
         {
             return $"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}";
         }
         // タイマー表示
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
-            currentTime.Text = this.GetCurrentTime();
+            lb_currentTime.Text = this.GetCurrentTime();
         }
 
-        // 出勤打刻ボタン
-        private void stampBtn_Click(object sender, EventArgs e)
+        // 出勤/退勤
+        private void GetAttendanceOrLeaving()
         {
-            // 打刻ボタン2度押し不可
-            stampBtn.Enabled = false;
-            // 打刻時間の表示
-            TimeStamp.Text = GetCurrentTime();
-            // 打刻データをStamping.Daoへ(追加)
+            // DBより最新のデータ読み込み
+            this.LatestStamping = new StampingDao().GetLatestStamping(this.Employee.Code);
+            // 新規(最新データがnull)であれば出勤画面
+            // 既存で退勤時間が押されてあったら(退勤打刻が初期値でない)出勤画面
+            if (this.LatestStamping == null || LatestStamping.LeavingWork.CompareTo(new DateTime()) != 0)
+            {
+                this.SetAttendanceMenu();
+            }
+            else
+            {
+                this.SetLevingMenu();
+            }
+        }
+
+        // 出勤レコード追加
+        private void AddAttemdance()
+        {
             var dto = new StampingDto();
-            dto.EmployeeCode = cmbEmployee1.GetSelectedEmployee().Code;
+            dto.EmployeeCode = this.Employee.Code;
             dto.CreateTime = DateTime.Now;
             dto.Year = DateTime.Now.Year;
             dto.Month = DateTime.Now.Month;
@@ -104,26 +76,64 @@ namespace Attendance_APP
             new StampingDao().AddStamping(dto);
         }
 
-        // 退勤打刻ボタン
-        private void StampBtn2_Click(object sender, EventArgs e)
+        // 退勤レコード追加
+        private void UpdateLeaving()
         {
-            // 打刻ボタン2度押し不可
-            StampBtn2.Enabled = false;
-            // 打刻時間を表示
-            TimeStamp.Text = GetCurrentTime();
-            // 退勤打刻データ→<StampingDto>
             var dto = new StampingDto();
             dto.UpdateTime = DateTime.Now;
             dto.LeavingWork = DateTime.Now;
             // 出勤時間、退勤時間を取得(丸め無し)
             var startTime = new WorkingHours().GetStartTime(this.LatestStamping.Attendance);
             var endTime = new WorkingHours().GetEndTime(dto.LeavingWork);
-            // 労働時間
             dto.WorkingHours = new WorkingHours().GetWorkingHours(startTime, endTime);
 
-            // 出勤打刻データに対して退勤打刻、労働時間をStampingDaoへ
             dto.Id = this.LatestStamping.Id;
             new StampingDao().UpdateStamping(dto);
+        }
+
+        // 出勤打刻画面
+        private void SetAttendanceMenu()
+        {
+            // 退勤ボタン不可
+            btn_leaving.Enabled = false;
+        }
+
+        // 退勤打刻画面
+        private void SetLevingMenu()
+        {
+            // cmb_stampingTypeに設定・表示
+            cmbStampingType1.SetLatestStampingType(this.LatestStamping);
+            // 出勤ボタン不可
+            btn_attendance.Enabled = false;
+        }
+
+        // 出勤ボタン
+        private void btn_attendance_Click(object sender, EventArgs e)
+        {
+            // 二度押不可
+            btn_attendance.Enabled = false;
+            // 打刻時間の表示
+            lb_stampingTime.Text = GetCurrentTime();
+
+            this.AddAttemdance();
+
+        }
+
+        // 退勤ボタン
+        private void btn_leaving_Click(object sender, EventArgs e)
+        {
+            // 二度押不可
+            btn_leaving.Enabled = false;
+            // 打刻時間の表示
+            lb_stampingTime.Text = GetCurrentTime();
+
+            this.UpdateLeaving();
+
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

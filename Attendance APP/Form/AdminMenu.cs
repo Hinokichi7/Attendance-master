@@ -9,10 +9,11 @@ namespace Attendance_APP
     public partial class AdminMenu : Form
     {
 
-        public AdminMenu()
+        public AdminMenu(EmployeeDto employee)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            label1.Text = "管理者 [" + employee.Name +"]";
         }
 
         private void NewRecord_Click(object sender, EventArgs e)

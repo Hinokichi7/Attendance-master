@@ -29,210 +29,185 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.currentTime = new System.Windows.Forms.Label();
-            this.stampBtn = new System.Windows.Forms.Button();
-            this.TimeStamp = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cmbStampingType1 = new Attendance_APP.Contorol.CmbStampingType();
-            this.cmbEmployee1 = new Attendance_APP.CmbEmployee();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lb_employee = new System.Windows.Forms.Label();
+            this.btn_attendance = new System.Windows.Forms.Button();
+            this.btn_leaving = new System.Windows.Forms.Button();
+            this.tb_password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.StampBtn2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lb_currentTime = new System.Windows.Forms.Label();
+            this.btn_close = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cmbStampingType1 = new Attendance_APP.Contorol.CmbStampingType();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lb_stampingTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // timer1
+            // lb_employee
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.lb_employee.AutoSize = true;
+            this.lb_employee.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb_employee.Location = new System.Drawing.Point(12, 32);
+            this.lb_employee.Name = "lb_employee";
+            this.lb_employee.Size = new System.Drawing.Size(85, 24);
+            this.lb_employee.TabIndex = 0;
+            this.lb_employee.Text = "employee";
             // 
-            // currentTime
+            // btn_attendance
             // 
-            this.currentTime.AutoSize = true;
-            this.currentTime.Font = new System.Drawing.Font("メイリオ", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.currentTime.Location = new System.Drawing.Point(27, 278);
-            this.currentTime.Name = "currentTime";
-            this.currentTime.Size = new System.Drawing.Size(148, 48);
-            this.currentTime.TabIndex = 0;
-            this.currentTime.Text = "現在時間";
+            this.btn_attendance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_attendance.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btn_attendance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_attendance.Location = new System.Drawing.Point(15, 157);
+            this.btn_attendance.Name = "btn_attendance";
+            this.btn_attendance.Size = new System.Drawing.Size(100, 40);
+            this.btn_attendance.TabIndex = 4;
+            this.btn_attendance.Text = "出勤";
+            this.btn_attendance.UseVisualStyleBackColor = false;
+            this.btn_attendance.Click += new System.EventHandler(this.btn_attendance_Click);
             // 
-            // stampBtn
+            // btn_leaving
             // 
-            this.stampBtn.BackColor = System.Drawing.Color.YellowGreen;
-            this.stampBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stampBtn.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.stampBtn.Location = new System.Drawing.Point(0, 0);
-            this.stampBtn.Name = "stampBtn";
-            this.stampBtn.Size = new System.Drawing.Size(410, 214);
-            this.stampBtn.TabIndex = 1;
-            this.stampBtn.Text = "出社";
-            this.stampBtn.UseVisualStyleBackColor = false;
-            this.stampBtn.Click += new System.EventHandler(this.stampBtn_Click);
+            this.btn_leaving.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_leaving.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btn_leaving.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_leaving.Location = new System.Drawing.Point(121, 157);
+            this.btn_leaving.Name = "btn_leaving";
+            this.btn_leaving.Size = new System.Drawing.Size(100, 40);
+            this.btn_leaving.TabIndex = 5;
+            this.btn_leaving.Text = "退勤";
+            this.btn_leaving.UseVisualStyleBackColor = false;
+            this.btn_leaving.Click += new System.EventHandler(this.btn_leaving_Click);
             // 
-            // TimeStamp
+            // tb_password
             // 
-            this.TimeStamp.AutoSize = true;
-            this.TimeStamp.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TimeStamp.Location = new System.Drawing.Point(124, 242);
-            this.TimeStamp.Name = "TimeStamp";
-            this.TimeStamp.Size = new System.Drawing.Size(0, 36);
-            this.TimeStamp.TabIndex = 3;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.cmbStampingType1);
-            this.splitContainer1.Panel1.Controls.Add(this.cmbEmployee1);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.currentTime);
-            this.splitContainer1.Panel1.Controls.Add(this.TimeStamp);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 386;
-            this.splitContainer1.TabIndex = 6;
-            // 
-            // cmbStampingType1
-            // 
-            this.cmbStampingType1.Location = new System.Drawing.Point(149, 179);
-            this.cmbStampingType1.Name = "cmbStampingType1";
-            this.cmbStampingType1.Size = new System.Drawing.Size(104, 35);
-            this.cmbStampingType1.TabIndex = 13;
-            // 
-            // cmbEmployee1
-            // 
-            this.cmbEmployee1.Location = new System.Drawing.Point(149, 67);
-            this.cmbEmployee1.Name = "cmbEmployee1";
-            this.cmbEmployee1.Size = new System.Drawing.Size(147, 79);
-            this.cmbEmployee1.TabIndex = 12;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(30, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 28);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "打刻時間";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(30, 186);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 28);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "勤務種別";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(30, 119);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 28);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "部署";
+            this.tb_password.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tb_password.Location = new System.Drawing.Point(75, 102);
+            this.tb_password.Name = "tb_password";
+            this.tb_password.Size = new System.Drawing.Size(177, 24);
+            this.tb_password.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(30, 67);
+            this.label1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(12, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 28);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 7;
-            this.label1.Text = "氏名";
+            this.label1.Text = "勤務種別";
             // 
-            // splitContainer2
+            // label2
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(13, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 18);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "備考";
             // 
-            // splitContainer2.Panel1
+            // lb_currentTime
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.stampBtn);
+            this.lb_currentTime.AutoSize = true;
+            this.lb_currentTime.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb_currentTime.Location = new System.Drawing.Point(75, 129);
+            this.lb_currentTime.Name = "lb_currentTime";
+            this.lb_currentTime.Size = new System.Drawing.Size(105, 24);
+            this.lb_currentTime.TabIndex = 9;
+            this.lb_currentTime.Text = "currentTime";
             // 
-            // splitContainer2.Panel2
+            // btn_close
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.StampBtn2);
-            this.splitContainer2.Size = new System.Drawing.Size(410, 450);
-            this.splitContainer2.SplitterDistance = 214;
-            this.splitContainer2.TabIndex = 0;
+            this.btn_close.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btn_close.Location = new System.Drawing.Point(215, 227);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(57, 22);
+            this.btn_close.TabIndex = 10;
+            this.btn_close.Text = "終了";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // StampBtn2
+            // timer1
             // 
-            this.StampBtn2.BackColor = System.Drawing.Color.Tan;
-            this.StampBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StampBtn2.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.StampBtn2.Location = new System.Drawing.Point(0, 0);
-            this.StampBtn2.Name = "StampBtn2";
-            this.StampBtn2.Size = new System.Drawing.Size(410, 232);
-            this.StampBtn2.TabIndex = 1;
-            this.StampBtn2.Text = "退社";
-            this.StampBtn2.UseVisualStyleBackColor = false;
-            this.StampBtn2.Click += new System.EventHandler(this.StampBtn2_Click);
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // Stamping
+            // cmbStampingType1
+            // 
+            this.cmbStampingType1.Location = new System.Drawing.Point(74, 61);
+            this.cmbStampingType1.Name = "cmbStampingType1";
+            this.cmbStampingType1.Size = new System.Drawing.Size(104, 35);
+            this.cmbStampingType1.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(13, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "現在時刻";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(13, 206);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "打刻時間";
+            // 
+            // lb_stampingTime
+            // 
+            this.lb_stampingTime.AutoSize = true;
+            this.lb_stampingTime.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb_stampingTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lb_stampingTime.Location = new System.Drawing.Point(75, 200);
+            this.lb_stampingTime.Name = "lb_stampingTime";
+            this.lb_stampingTime.Size = new System.Drawing.Size(0, 24);
+            this.lb_stampingTime.TabIndex = 9;
+            // 
+            // Stamping2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Stamping";
-            this.Text = "打刻メニュー";
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btn_close);
+            this.Controls.Add(this.lb_stampingTime);
+            this.Controls.Add(this.lb_currentTime);
+            this.Controls.Add(this.cmbStampingType1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tb_password);
+            this.Controls.Add(this.btn_leaving);
+            this.Controls.Add(this.btn_attendance);
+            this.Controls.Add(this.lb_employee);
+            this.Name = "Stamping2";
+            this.Text = "StampingMenu";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label currentTime;
-        private System.Windows.Forms.Button stampBtn;
-        private System.Windows.Forms.Label TimeStamp;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button StampBtn2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_employee;
+        private System.Windows.Forms.Button btn_attendance;
+        private System.Windows.Forms.Button btn_leaving;
+        private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private CmbEmployee cmbEmployee1;
         private Contorol.CmbStampingType cmbStampingType1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_currentTime;
+        private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lb_stampingTime;
     }
 }

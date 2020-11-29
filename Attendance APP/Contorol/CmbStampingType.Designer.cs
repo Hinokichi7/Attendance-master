@@ -33,11 +33,11 @@
             // 
             // cmb_stampingType
             // 
-            this.cmb_stampingType.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cmb_stampingType.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cmb_stampingType.FormattingEnabled = true;
             this.cmb_stampingType.Location = new System.Drawing.Point(3, 3);
             this.cmb_stampingType.Name = "cmb_stampingType";
-            this.cmb_stampingType.Size = new System.Drawing.Size(94, 26);
+            this.cmb_stampingType.Size = new System.Drawing.Size(94, 25);
             this.cmb_stampingType.TabIndex = 0;
             this.cmb_stampingType.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 

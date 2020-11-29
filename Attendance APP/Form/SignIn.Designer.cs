@@ -37,9 +37,11 @@
             // 
             // tb_password
             // 
+            this.tb_password.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tb_password.Location = new System.Drawing.Point(30, 110);
             this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(213, 19);
+            this.tb_password.PasswordChar = '*';
+            this.tb_password.Size = new System.Drawing.Size(213, 24);
             this.tb_password.TabIndex = 0;
             // 
             // label1
@@ -48,9 +50,9 @@
             this.label1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(27, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 18);
+            this.label1.Size = new System.Drawing.Size(176, 18);
             this.label1.TabIndex = 2;
-            this.label1.Text = "パスワードを入力して下さい";
+            this.label1.Text = "パスワードを入力して下さい。";
             // 
             // label2
             // 
