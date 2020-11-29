@@ -22,24 +22,38 @@ namespace Attendance_APP
         }
 
         // 入力フォームから社員番号を取得
-        private int GetPassNumber()
+        private int? GetPassNumber()
         {
-            var passnumber = int.Parse(tb_password.Text.Substring(tb_password.Text.Length - 3));
-            return int.Parse(tb_password.Text.Substring(tb_password.Text.Length - 3));
+            int passnumber;
+            if(int.TryParse(tb_password.Text.Substring(tb_password.Text.Length - 3), out passnumber))
+            {
+                return passnumber;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // コードから社員を取得
-        private void SetEmployee(int code)
+        private void SetEmployee(int? code)
         {
+            if(code != null)
+            {
             this.Employee = new EmployeeDao().GetAllEmployee().Find(employee => employee.Code == code);
+            }
         }
 
         // 管理者コードから社員を取得
         private void SetAdministor()
         {
+            int? passnumber = this.GetPassNumber();
+            if(passnumber != null)
+            {
             var administorList = new List<int>() { 1, 3, 6 };
-            var adminstorCode = administorList.Find(administor => administor == this.GetPassNumber());
+            var adminstorCode = administorList.Find(administor => administor == passnumber);
             this.SetEmployee(adminstorCode);
+            }
         }
 
 

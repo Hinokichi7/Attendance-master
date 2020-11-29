@@ -37,7 +37,7 @@ namespace Attendance_APP
         // 現在時刻表示
         private string GetCurrentTime()
         {
-            return $"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}";
+            return $"{DateTime.Now.Hour:d2}:{DateTime.Now.Minute:d2}:{DateTime.Now.Second:d2}";
         }
         // タイマー表示
         private void timer1_Tick_1(object sender, EventArgs e)

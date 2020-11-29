@@ -111,10 +111,10 @@
             // lb_currentTime
             // 
             this.lb_currentTime.AutoSize = true;
-            this.lb_currentTime.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb_currentTime.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lb_currentTime.Location = new System.Drawing.Point(75, 129);
             this.lb_currentTime.Name = "lb_currentTime";
-            this.lb_currentTime.Size = new System.Drawing.Size(105, 24);
+            this.lb_currentTime.Size = new System.Drawing.Size(104, 20);
             this.lb_currentTime.TabIndex = 9;
             this.lb_currentTime.Text = "currentTime";
             // 
@@ -163,14 +163,14 @@
             // lb_stampingTime
             // 
             this.lb_stampingTime.AutoSize = true;
-            this.lb_stampingTime.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lb_stampingTime.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lb_stampingTime.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lb_stampingTime.Location = new System.Drawing.Point(75, 200);
             this.lb_stampingTime.Name = "lb_stampingTime";
-            this.lb_stampingTime.Size = new System.Drawing.Size(0, 24);
+            this.lb_stampingTime.Size = new System.Drawing.Size(0, 20);
             this.lb_stampingTime.TabIndex = 9;
             // 
-            // Stamping2
+            // Stamping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.btn_leaving);
             this.Controls.Add(this.btn_attendance);
             this.Controls.Add(this.lb_employee);
-            this.Name = "Stamping2";
+            this.Name = "Stamping";
             this.Text = "StampingMenu";
             this.ResumeLayout(false);
             this.PerformLayout();
