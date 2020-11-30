@@ -94,6 +94,7 @@
     <Compile Include="Contorol\CmbStampingType.Designer.cs">
       <DependentUpon>CmbStampingType.cs</DependentUpon>
     </Compile>
+    <Compile Include="System\Configuration\ConfigurationManager.cs" />
     <Compile Include="Util\SelectEmployee.cs" />
     <Compile Include="Util\WorkingHours.cs" />
     <Compile Include="Dao\DepartmentDao.cs" />
