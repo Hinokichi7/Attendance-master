@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Collections.Specialized;
-using Attendance_APP.Dao;
+﻿using Attendance_APP.Dao;
 using Attendance_APP.Dto;
 using System;
 using System.Collections.Generic;
@@ -23,11 +21,6 @@ namespace Attendance_APP
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        // 設定ファイルからパスワードの読み込み
-        private void GetPassword()
-        {
-            string password = ConfigurationManager.AppSettings.Get("Key0");
-        }
 
         // 入力フォームから社員番号を取得
         private int? GetPassNumber()

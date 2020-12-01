@@ -23,7 +23,9 @@ namespace Attendance_APP.Dao
                     {
                         Code = int.Parse(dr["code"].ToString()),
                         Name = dr["name"].ToString(),
-                        DepartmentCode = int.Parse(dr["departmentCode"].ToString())
+                        DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
+                        Password = dr["password"].ToString(),
+                        AdminFlug = int.Parse(dr["adminFlug"].ToString())
                     };
                     list.Add(dto);
                 }
