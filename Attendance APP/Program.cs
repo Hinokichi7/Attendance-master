@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Configuration;
+using System.Collections.Specialized;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +19,9 @@ namespace Attendance_APP
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SignIn());
+            NameValueCollection sAll;
+            //sAll = ConfigurationManager.AppSettings;
+
         }
     }
 }
