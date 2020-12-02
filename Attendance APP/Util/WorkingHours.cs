@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Configuration;
+using System.Collections.Specialized;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,19 @@ namespace Attendance_APP.Util
     class WorkingHours
     {
         private TimeSpan interval = TimeSpan.FromMinutes(30);
+        private string BaseStartTime { get; set; }
+        private string BaseEndTime { get; set; }
 
+        public WorkingHours()
+        {
+            this.SetBaseTime();
+        }
+
+        private void SetBaseTime()
+        {
+            this.BaseStartTime = ConfigurationManager.AppSettings.Get("StartTime");
+            this.BaseEndTime = ConfigurationManager.AppSettings.Get("EndTime");
+        }
         // 労働時間計算　退勤時間(丸め) - 出勤時間(丸め)
         public double GetWorkingHours(DateTime startTime, DateTime endTime)
         {
@@ -25,7 +39,7 @@ namespace Attendance_APP.Util
         public DateTime GetStartTime(DateTime startTime)
         {
             // 出勤時間(丸め)：定時以前なら定時、定時以降なら切り上げ
-            var baseTime = DateTime.Parse($"{startTime.Year}/{startTime.Month}/{startTime.Day} 09:00:00");
+            var baseTime = DateTime.Parse($"{startTime.Year}/{startTime.Month}/{startTime.Day} "+ this.BaseStartTime);
             if (startTime > baseTime)
             {
                 return RoundUp(startTime, this.interval);
