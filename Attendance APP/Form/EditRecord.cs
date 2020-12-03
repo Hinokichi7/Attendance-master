@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace Attendance_APP.Admin
 {
-    public partial class EditRecordForm : Form
+    public partial class EditRecord : Form
     {
         private EmployeeDto employee;
         private StampingDto Stamping { get; set; }
 
-        public EditRecordForm(EmployeeDto employee, List<StampingDto> stamping)
+        public EditRecord(EmployeeDto employee, List<StampingDto> stamping)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;

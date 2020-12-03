@@ -34,7 +34,7 @@
             // 
             // cmb_employee
             // 
-            this.cmb_employee.Font = new System.Drawing.Font("メイリオ", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cmb_employee.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cmb_employee.FormattingEnabled = true;
             this.cmb_employee.Location = new System.Drawing.Point(3, 3);
             this.cmb_employee.Name = "cmb_employee";
@@ -45,7 +45,7 @@
             // departmentName
             // 
             this.departmentName.AutoSize = true;
-            this.departmentName.Font = new System.Drawing.Font("メイリオ", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.departmentName.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.departmentName.Location = new System.Drawing.Point(3, 37);
             this.departmentName.Name = "departmentName";
             this.departmentName.Size = new System.Drawing.Size(0, 23);
@@ -58,7 +58,7 @@
             this.Controls.Add(this.departmentName);
             this.Controls.Add(this.cmb_employee);
             this.Name = "CmbEmployee";
-            this.Size = new System.Drawing.Size(147, 79);
+            this.Size = new System.Drawing.Size(120, 67);
             this.ResumeLayout(false);
             this.PerformLayout();
 

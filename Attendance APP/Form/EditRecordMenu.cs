@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace Attendance_APP.Admin
 {
-    public partial class EditRecord : Form
+    public partial class EditRecordMenu : Form
     {
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
 
-        public EditRecord()
+        public EditRecordMenu()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -65,7 +65,7 @@ namespace Attendance_APP.Admin
             var selectStampings = this.GetSelectedRecords();
             if(this.SelectedRows.Count == 1)
             {
-                var editRecordForm = new EditRecordForm(cmbEmployee1.GetSelectedEmployee(), selectStampings);
+                var editRecordForm = new EditRecord(cmbEmployee1.GetSelectedEmployee(), selectStampings);
 
                 if (System.Windows.Forms.DialogResult.OK == editRecordForm.ShowDialog())
                 {
@@ -103,6 +103,11 @@ namespace Attendance_APP.Admin
             }
 
 
+        }
+
+        private void NewRecord_Click(object sender, EventArgs e)
+        {
+            new NewRecord().ShowDialog(this);
         }
     }
 }

@@ -16,14 +16,10 @@ namespace Attendance_APP
             label1.Text = "管理者 [" + employee.Name +"]";
         }
 
-        private void NewRecord_Click(object sender, EventArgs e)
-        {
-            new NewRecord().ShowDialog(this);
-        }
 
         private void EditRecord_Click(object sender, EventArgs e)
         {
-            new EditRecord().ShowDialog(this);
+            new EditRecordMenu().ShowDialog(this);
         }
 
         private void Output_Click(object sender, EventArgs e)

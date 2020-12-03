@@ -1,6 +1,6 @@
 ﻿namespace Attendance_APP.Admin
 {
-    partial class EditRecordForm
+    partial class EditRecord
     {
         /// <summary>
         /// Required designer variable.

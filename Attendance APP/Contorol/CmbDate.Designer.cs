@@ -39,30 +39,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(255, 7);
+            this.label3.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(245, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 21);
+            this.label3.Size = new System.Drawing.Size(19, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "日";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("メイリオ", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(172, 7);
+            this.label2.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(167, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 21);
+            this.label2.Size = new System.Drawing.Size(19, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "月";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("メイリオ", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(89, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 21);
+            this.label1.Size = new System.Drawing.Size(19, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "年";
             // 
@@ -70,7 +70,7 @@
             // 
             this.cmb_day.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cmb_day.FormattingEnabled = true;
-            this.cmb_day.Location = new System.Drawing.Point(202, 6);
+            this.cmb_day.Location = new System.Drawing.Point(192, 3);
             this.cmb_day.Name = "cmb_day";
             this.cmb_day.Size = new System.Drawing.Size(47, 25);
             this.cmb_day.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             this.cmb_month.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cmb_month.FormattingEnabled = true;
-            this.cmb_month.Location = new System.Drawing.Point(119, 3);
+            this.cmb_month.Location = new System.Drawing.Point(114, 2);
             this.cmb_month.Name = "cmb_month";
             this.cmb_month.Size = new System.Drawing.Size(47, 25);
             this.cmb_month.TabIndex = 3;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.cmb_month);
             this.Controls.Add(this.cmb_year);
             this.Name = "CmbDate";
-            this.Size = new System.Drawing.Size(281, 38);
+            this.Size = new System.Drawing.Size(266, 33);
             this.ResumeLayout(false);
             this.PerformLayout();
 

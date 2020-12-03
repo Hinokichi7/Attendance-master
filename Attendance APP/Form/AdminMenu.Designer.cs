@@ -28,47 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NewRecord = new System.Windows.Forms.Button();
             this.EditRecord = new System.Windows.Forms.Button();
-            this.Output = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.NewMaster = new System.Windows.Forms.Button();
+            this.Output = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // NewRecord
-            // 
-            this.NewRecord.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.NewRecord.Location = new System.Drawing.Point(86, 57);
-            this.NewRecord.Margin = new System.Windows.Forms.Padding(4);
-            this.NewRecord.Name = "NewRecord";
-            this.NewRecord.Size = new System.Drawing.Size(100, 40);
-            this.NewRecord.TabIndex = 0;
-            this.NewRecord.Text = "新規";
-            this.NewRecord.UseVisualStyleBackColor = true;
-            this.NewRecord.Click += new System.EventHandler(this.NewRecord_Click);
             // 
             // EditRecord
             // 
-            this.EditRecord.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.EditRecord.Location = new System.Drawing.Point(86, 105);
+            this.EditRecord.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.EditRecord.Location = new System.Drawing.Point(75, 77);
             this.EditRecord.Margin = new System.Windows.Forms.Padding(4);
             this.EditRecord.Name = "EditRecord";
-            this.EditRecord.Size = new System.Drawing.Size(100, 40);
+            this.EditRecord.Size = new System.Drawing.Size(130, 40);
             this.EditRecord.TabIndex = 1;
-            this.EditRecord.Text = "編集";
+            this.EditRecord.Text = "レコード編集";
             this.EditRecord.UseVisualStyleBackColor = true;
             this.EditRecord.Click += new System.EventHandler(this.EditRecord_Click);
-            // 
-            // Output
-            // 
-            this.Output.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Output.Location = new System.Drawing.Point(86, 153);
-            this.Output.Margin = new System.Windows.Forms.Padding(4);
-            this.Output.Name = "Output";
-            this.Output.Size = new System.Drawing.Size(100, 40);
-            this.Output.TabIndex = 2;
-            this.Output.Text = "出力";
-            this.Output.UseVisualStyleBackColor = true;
-            this.Output.Click += new System.EventHandler(this.Output_Click);
             // 
             // label1
             // 
@@ -79,15 +55,38 @@
             this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 3;
             // 
+            // NewMaster
+            // 
+            this.NewMaster.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewMaster.Location = new System.Drawing.Point(75, 125);
+            this.NewMaster.Margin = new System.Windows.Forms.Padding(4);
+            this.NewMaster.Name = "NewMaster";
+            this.NewMaster.Size = new System.Drawing.Size(130, 40);
+            this.NewMaster.TabIndex = 2;
+            this.NewMaster.Text = "マスタ編集";
+            this.NewMaster.UseVisualStyleBackColor = true;
+            // 
+            // Output
+            // 
+            this.Output.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Output.Location = new System.Drawing.Point(75, 173);
+            this.Output.Margin = new System.Windows.Forms.Padding(4);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(130, 40);
+            this.Output.TabIndex = 4;
+            this.Output.Text = "出力";
+            this.Output.UseVisualStyleBackColor = true;
+            this.Output.Click += new System.EventHandler(this.Output_Click);
+            // 
             // AdminMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.Output);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.NewMaster);
             this.Controls.Add(this.EditRecord);
-            this.Controls.Add(this.NewRecord);
             this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminMenu";
@@ -98,10 +97,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button NewRecord;
         private System.Windows.Forms.Button EditRecord;
-        private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button NewMaster;
+        private System.Windows.Forms.Button Output;
     }
 }
