@@ -106,7 +106,7 @@
             this.Controls.Add(this.cmb_month);
             this.Controls.Add(this.cmb_year);
             this.Name = "CmbDate";
-            this.Size = new System.Drawing.Size(266, 33);
+            this.Size = new System.Drawing.Size(263, 33);
             this.ResumeLayout(false);
             this.PerformLayout();
 

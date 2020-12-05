@@ -19,7 +19,7 @@ namespace Attendance_APP
 
         private void EditRecord_Click(object sender, EventArgs e)
         {
-            new EditRecordMenu().ShowDialog(this);
+            new RecordMenu().ShowDialog(this);
         }
 
         private void Output_Click(object sender, EventArgs e)

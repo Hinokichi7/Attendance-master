@@ -32,5 +32,28 @@ namespace Attendance_APP.Dao
                 return list;
             }
         }
+
+        public List<DepartmentDto> GetSelectedDepartment(string Name)
+        {
+            var list = new List<DepartmentDto>();
+            var dt = new DataTable();
+            using (var conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Department WHERE name = @name", conn))
+            {
+                cmd.Parameters.AddWithValue("@name", Name);
+                conn.Open();
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    var dto = new DepartmentDto();
+                    dto.Code = int.Parse(dr["code"].ToString());
+                    dto.Name = dr["name"].ToString();
+
+                    list.Add(dto);
+                }
+                return list;
+            }
+        }
     }
 }

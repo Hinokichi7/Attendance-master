@@ -7,12 +7,13 @@ using System.Windows.Forms;
 
 namespace Attendance_APP.Admin
 {
-    public partial class EditRecordMenu : Form
+    public partial class RecordMenu : Form
     {
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
+        List<EmployeeDto> Employees { get; set; }
 
-        public EditRecordMenu()
+        public RecordMenu()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -21,12 +22,12 @@ namespace Attendance_APP.Admin
 
         private void SetGredView()
         {
-            var employee = cmbEmployee1.GetSelectedEmployee();
+            this.Employees = cmbEmployee21.SelectedEmployees;
             var startPoint = cmbDate1.GetSelectedPoint();
             var endPoint = cmbDate2.GetSelectedPoint();
-            if (employee != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
+            if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
             {
-                this.StampingTable = new StampingDao().GetAllStamping(employee.Code, startPoint, endPoint);
+                this.StampingTable = new StampingDao().GetAllStamping(this.Employees.Code, startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
                 dataGridView1.Columns[4].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns[5].DefaultCellStyle.Format = "HH:mm";
@@ -65,7 +66,7 @@ namespace Attendance_APP.Admin
             var selectStampings = this.GetSelectedRecords();
             if(this.SelectedRows.Count == 1)
             {
-                var editRecordForm = new EditRecord(cmbEmployee1.GetSelectedEmployee(), selectStampings);
+                var editRecordForm = new EditRecord(this.Employees[0], selectStampings);
 
                 if (System.Windows.Forms.DialogResult.OK == editRecordForm.ShowDialog())
                 {

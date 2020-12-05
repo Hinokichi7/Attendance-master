@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Configuration;
+using System.Collections.Specialized;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +10,8 @@ namespace Attendance_APP
 {
     static class Program
     {
+        public static string startTime = ConfigurationManager.AppSettings.Get("StartTime");
+        public static string endTime = ConfigurationManager.AppSettings.Get("EndTime");
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
