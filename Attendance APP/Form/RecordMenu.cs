@@ -23,11 +23,11 @@ namespace Attendance_APP.Admin
         private void SetGredView()
         {
             this.Employees = cmbEmployee21.SelectedEmployees;
-            int[] employeeCodes;
+            int[] employeeCodes = new int[] { };
             foreach(var employee in this.Employees)
             {
-                employeeCodes = new int[] { employee.Code };
-             }
+                var x = employee.Code;
+            }
             var startPoint = cmbDate1.GetSelectedPoint();
             var endPoint = cmbDate2.GetSelectedPoint();
             if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
