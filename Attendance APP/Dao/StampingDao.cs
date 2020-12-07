@@ -68,14 +68,14 @@ namespace Attendance_APP.Dao
             return list;
         }
 
-        public DataTable GetSerchedStamping(int employeeCodes, string startPoint, string endPoint)
+        public DataTable GetSerchedStamping(int employeeCode, string startPoint, string endPoint)
         {
             // 社員を指定して最新の打刻データを読み込み
             var dt = new DataTable();
             using (var conn = GetConnection())
             using (var cmd = new SqlCommand("SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y WHERE x.stampingCode = y.stampingCode AND employeeCode = @employeeCode AND attendance BETWEEN @startPoint AND @endPoint", conn))
             {
-                cmd.Parameters.AddWithValue("@employeeCode", employeeCodes);
+                cmd.Parameters.AddWithValue("@employeeCode", employeeCode);
                 cmd.Parameters.AddWithValue("@startPoint", startPoint);
                 cmd.Parameters.AddWithValue("@endPoint", endPoint);
                 conn.Open();

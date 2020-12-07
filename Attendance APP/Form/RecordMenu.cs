@@ -20,19 +20,22 @@ namespace Attendance_APP.Admin
             
         }
 
+
         private void SetGredView()
         {
             this.Employees = cmbEmployee21.SelectedEmployees;
-            int[] employeeCodes;
-            foreach(var employee in this.Employees)
-            {
-                employeeCodes = new int[] { employee.Code };
-             }
+
             var startPoint = cmbDate1.GetSelectedPoint();
             var endPoint = cmbDate2.GetSelectedPoint();
             if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
             {
-                this.StampingTable = new StampingDao().GetSerchedStamping(employeeCodes, startPoint, endPoint);
+                foreach (var employee in this.Employees)
+                {
+                    var employeeCode = employee.Code;
+                    DataTable dt = new StampingDao().GetSerchedStamping(employeeCode, startPoint, endPoint);
+                    DataRow dr = dt.NewRow();
+                    this.StampingTable = dt.Rows.Add(dr);
+                }
                 dataGridView1.DataSource = this.StampingTable;
                 dataGridView1.Columns[4].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns[5].DefaultCellStyle.Format = "HH:mm";
