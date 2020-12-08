@@ -12,6 +12,7 @@ namespace Attendance_APP.Admin
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
         List<EmployeeDto> Employees { get; set; }
+        List<int> EmployeeCodes { get; set; }
 
         public RecordMenu()
         {
@@ -32,10 +33,12 @@ namespace Attendance_APP.Admin
                 foreach (var employee in this.Employees)
                 {
                     var employeeCode = employee.Code;
-                    DataTable dt = new StampingDao().GetSerchedStamping(employeeCode, startPoint, endPoint);
-                    DataRow dr = dt.NewRow();
-                    this.StampingTable = dt.Rows.Add(dr);
+                    this.EmployeeCodes.Add(employeeCode);
+                    //DataTable dt = new StampingDao().GetSerchedStamping(employeeCode, startPoint, endPoint);
+                    //DataRow dr = dt.NewRow();
+                    //this.StampingTable = dt.Rows.Add(dr);
                 }
+                this.StampingTable = new StampingDao().GetSerchedStamping2(this.EmployeeCodes, startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
                 dataGridView1.Columns[4].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns[5].DefaultCellStyle.Format = "HH:mm";
