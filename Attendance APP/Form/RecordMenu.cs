@@ -30,10 +30,10 @@ namespace Attendance_APP.Admin
             var endPoint = cmbDate2.GetSelectedPoint();
             if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
             {
+                this.EmployeeCodes = new List<int>();
                 foreach (var employee in this.Employees)
-                {
-                    var employeeCode = employee.Code;
-                    this.EmployeeCodes.Add(employeeCode);
+                {                   
+                    this.EmployeeCodes.Add(employee.Code);
                     //DataTable dt = new StampingDao().GetSerchedStamping(employeeCode, startPoint, endPoint);
                     //DataRow dr = dt.NewRow();
                     //this.StampingTable = dt.Rows.Add(dr);
