@@ -87,25 +87,33 @@ namespace Attendance_APP.Dao
 
         public DataTable GetSerchedStamping2(List<int> employeeCodes, string startPoint, string endPoint)
         {
-            // employeeCode複数検索用
-            string code = null;
-            int codewhere = 0;
-            for (int i = 0; i < employeeCodes.Count - 1; i ++)
+            // カラム
+            string sql = "SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark ";
+            // テーブル
+            sql = sql + "FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y ";
+            // 条件①:社員コード
+            sql = sql + "WHERE employeeCode IN(";
+            for (int i = 0; i < employeeCodes.Count - 1; i++)
             {
-                //code =  code + "employeeCode = " + employeeCodes[i].ToString() + " AND ";
-                code = code + employeeCodes[i] + ",";               
+                sql = sql + employeeCodes[i] + ",";
             }
-            string code2 =  code + employeeCodes[employeeCodes.Count -1];
-            //codewhere = int.Parse(code2);
+            sql = sql + employeeCodes[employeeCodes.Count - 1];
+            sql =  sql + ") ";
+            // 条件②:期間
+            sql = sql + "AND attendance BETWEEN " + startPoint + " AND " + @endPoint;
+            // 条件③:勤務コード(stampingTyoeCode→stampingTypeName)
+            sql = sql + " AND x.stampingCode = y.stampingCode";
+
 
             // 社員を指定して最新の打刻データを読み込み
             var dt = new DataTable();
             using (var conn = GetConnection())
-            using (var cmd = new SqlCommand("SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y WHERE employeeCode IN(@employeeCodes) AND x.stampingCode = y.stampingCode AND attendance BETWEEN @startPoint AND @endPoint", conn))
+            //using (var cmd = new SqlCommand("SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y WHERE employeeCode IN(@employeeCodes) AND x.stampingCode = y.stampingCode AND attendance BETWEEN @startPoint AND @endPoint", conn))
+            using (var cmd = new SqlCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@employeeCodes", codewhere);
-                cmd.Parameters.AddWithValue("@startPoint", startPoint);
-                cmd.Parameters.AddWithValue("@endPoint", endPoint);
+                //cmd.Parameters.AddWithValue("@employeeCodes", codewhere);
+                //cmd.Parameters.AddWithValue("@startPoint", startPoint);
+                //cmd.Parameters.AddWithValue("@endPoint", endPoint);
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
