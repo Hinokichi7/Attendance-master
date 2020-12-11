@@ -62,6 +62,5 @@ namespace Attendance_APP
                 MessageBox.Show("正しいパスワードを入力してください。");
             }
         }
-
     }
 }
