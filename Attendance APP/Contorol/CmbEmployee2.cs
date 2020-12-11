@@ -40,11 +40,7 @@ namespace Attendance_APP
             }
         }
 
-        //private void cmb_department_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    this.SetSelectedDepartment();
-        //    this.SetCmbEmployee();
-        //}
+
         private void cmb_department_SelectionChangeCommitted(object sender, EventArgs e)
         {
             cmb_employee.Items.Clear();
@@ -56,8 +52,9 @@ namespace Attendance_APP
         {
             if(cmb_department.SelectedIndex == 0)
             {
-                var employees = new EmployeeDao().GetAllEmployee();
-                foreach (var employee in employees)
+                cmb_employee.Items.Add("(全員)");
+                this.SelectedEmployees = new EmployeeDao().GetAllEmployee();
+                foreach (var employee in this.SelectedEmployees)
                 {
                     cmb_employee.Items.Add(employee.Name);
                 }

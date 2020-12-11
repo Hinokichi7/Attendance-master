@@ -40,8 +40,9 @@ namespace Attendance_APP.Admin
                 }
                 this.StampingTable = new StampingDao().GetSerchedStamping2(this.EmployeeCodes, startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
-                dataGridView1.Columns[4].DefaultCellStyle.Format = "HH:mm";
-                dataGridView1.Columns[5].DefaultCellStyle.Format = "HH:mm";
+                dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
+                dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
+                dataGridView1.Columns["id"].Visible = false;
 
                 if (dataGridView1.Rows.Count == 0)
                 {

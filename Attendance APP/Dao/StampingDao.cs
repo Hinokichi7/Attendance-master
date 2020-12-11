@@ -88,22 +88,22 @@ namespace Attendance_APP.Dao
         public DataTable GetSerchedStamping2(List<int> employeeCodes, string startPoint, string endPoint)
         {
             // カラム
-            string sql = "SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark ";
+            string sql = "SELECT tbS.id, tbS.employeeCode, tbE.Name, year, month, day, attendance, leavingWork, tbS.stampingCode, stampingName, workingHours, remark ";
             // テーブル
-            sql = sql + "FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y ";
+            sql = sql + "FROM Attendance.dbo.Stamping as tbS, Attendance.dbo.StampingType as tbST, Attendance.dbo.Employee as tbE ";
             // 条件①:社員コード
             string inValue = string.Join(",", employeeCodes);
             sql = sql + "WHERE employeeCode IN(" + inValue + ") ";
             // 条件②:期間
             sql = sql + "AND attendance BETWEEN '" + startPoint + "' AND '" + @endPoint + "'";
-            // 条件③:勤務コード表示変更s
-            sql = sql + " AND x.stampingCode = y.stampingCode";
+            // 条件③:表示変更
+            sql = sql + " AND tbS.employeeCode = tbE.Code AND tbS.stampingCode = tbST.stampingCode";
 
 
             // 社員を指定して最新の打刻データを読み込み
             var dt = new DataTable();
             using (var conn = GetConnection())
-            using (var cmd = new SqlCommand(sql, conn))
+            using (var cmd = new SqlCommand(sql, conn))//using (var conn = GetConnection())を入れ子にしている
             {
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
