@@ -64,7 +64,8 @@ namespace Attendance_APP
             if(cmb_department.SelectedIndex == 0)
             {
                 cmb_employee.Items.Add("(全員)");
-                foreach (var employee in this.SelectedEmployees)
+                List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
+                foreach (var employee in employees)
                 {
                     cmb_employee.Items.Add(employee.Name);
                 }
@@ -90,6 +91,11 @@ namespace Attendance_APP
             {
                 this.SelectedEmployees[0] = this.SelectedEmployees.Find(employee => employee.Name == cmb_employee.SelectedItem.ToString());
             }
+        }
+
+        private void cmb_employee_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            this.GetSelectedEmployee();
         }
 
 
