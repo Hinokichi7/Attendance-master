@@ -92,13 +92,8 @@ namespace Attendance_APP.Dao
             // テーブル
             sql = sql + "FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y ";
             // 条件①:社員コード
-            sql = sql + "WHERE employeeCode IN(";
-            for (int i = 0; i < employeeCodes.Count - 1; i++)
-            {
-                sql = sql + employeeCodes[i] + ",";
-            }
-            sql = sql + employeeCodes[employeeCodes.Count - 1];
-            sql =  sql + ") ";
+            string inValue = string.Join(",", employeeCodes);
+            sql = sql + "WHERE employeeCode IN(" + inValue + ") ";
             // 条件②:期間
             sql = sql + "AND attendance BETWEEN '" + startPoint + "' AND '" + @endPoint + "'";
             // 条件③:勤務コード表示変更s
