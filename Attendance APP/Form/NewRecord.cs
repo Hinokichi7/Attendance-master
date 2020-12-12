@@ -50,7 +50,7 @@ namespace Attendance_APP
         private void AddNewRecord_Click_1(object sender, EventArgs e)
         {
             var dto = new StampingDto();
-            dto.EmployeeCode = cmbEmployee1.GetSelectedEmployee().Code;
+            dto.EmployeeCode = cmbEmployee2.SelectedEmployees[0].Code;
             dto.CreateTime = DateTime.Now;
             dto.Year = cmbDate1.GetSelectedValue().year;
             dto.Month = cmbDate1.GetSelectedValue().month;

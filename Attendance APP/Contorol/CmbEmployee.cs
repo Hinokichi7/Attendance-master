@@ -28,17 +28,18 @@ namespace Attendance_APP
             cmb_department.DataSource = new DepartmentDao().GetAllDepartment();
             cmb_department.ValueMember = "Name";
             cmb_department.DisplayMember = "Name";
+            cmb_department.SelectedIndex = -1;
         }
 
         private void SetSelectedDepaetment()
         {
             this.SelectedDepartment = new DepartmentDao().GetSelectedDepartment(cmb_department.SelectedValue.ToString());
-            this.
         }
 
         private void cmb_department_SelectionChangeCommitted(object sender, EventArgs e)
         {
             this.SetSelectedDepaetment();
+            this.SetCmbEmployee();
         }
 
         public List<int> GetDepaetmentCodes()
@@ -57,6 +58,27 @@ namespace Attendance_APP
             cmb_employee.DataSource = this.SelectedEmployees;
             cmb_employee.ValueMember = "Code";
             cmb_employee.DisplayMember = "Name";
+            cmb_department.SelectedIndex = -1;
+        }
+
+        public List<int> GetEmployeeCodes()
+        {
+            List<int> employeeCodes = new List<int>();
+            foreach (var employee in this.SelectedEmployees)
+            {
+                employeeCodes.Add(employee.Code);
+            }
+            return employeeCodes;
+        }
+        public void SetSelectedEmployee()
+        {
+            this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
+        }
+
+
+        private void cmb_employee_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            this.SetSelectedEmployee();
         }
     }
 }
