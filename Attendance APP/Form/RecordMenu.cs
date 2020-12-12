@@ -12,7 +12,6 @@ namespace Attendance_APP.Admin
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
         List<EmployeeDto> Employees { get; set; }
-        List<int> EmployeeCodes { get; set; }
 
         public RecordMenu()
         {
@@ -30,15 +29,7 @@ namespace Attendance_APP.Admin
             var endPoint = cmbDate2.GetSelectedPoint();
             if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
             {
-                this.EmployeeCodes = new List<int>();
-                foreach (var employee in this.Employees)
-                {                   
-                    this.EmployeeCodes.Add(employee.Code);
-                    //DataTable dt = new StampingDao().GetSerchedStamping(employeeCode, startPoint, endPoint);
-                    //DataRow dr = dt.NewRow();
-                    //this.StampingTable = dt.Rows.Add(dr);
-                }
-                this.StampingTable = new StampingDao().GetSerchedStamping2(this.EmployeeCodes, startPoint, endPoint);
+                this.StampingTable = new StampingDao().GetSerchedStamping2(cmbEmployee21.GetEmployeeCodes(), startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
                 dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";

@@ -93,11 +93,11 @@
     <Compile Include="Contorol\CmbDate.Designer.cs">
       <DependentUpon>CmbDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contorol\CmbEmployee.cs">
+    <Compile Include="Contorol\CmbEmplo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Contorol\CmbEmployee.Designer.cs">
-      <DependentUpon>CmbEmployee.cs</DependentUpon>
+    <Compile Include="Contorol\CmbEmplo.Designer.cs">
+      <DependentUpon>CmbEmplo.cs</DependentUpon>
     </Compile>
     <Compile Include="Contorol\CmbStampingType.cs">
       <SubType>UserControl</SubType>
@@ -105,11 +105,17 @@
     <Compile Include="Contorol\CmbStampingType.Designer.cs">
       <DependentUpon>CmbStampingType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contorol\CmbEmployee2.cs">
+    <Compile Include="Contorol\CmbEmployees.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Contorol\CmbEmployee2.Designer.cs">
-      <DependentUpon>CmbEmployee2.cs</DependentUpon>
+    <Compile Include="Contorol\CmbEmployees.Designer.cs">
+      <DependentUpon>CmbEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contorol\CmbEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Contorol\CmbEmployee.Designer.cs">
+      <DependentUpon>CmbEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\SelectEmployee.cs" />
     <Compile Include="Util\WorkingHours.cs" />
@@ -137,8 +143,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\OutputFile.cs" />
-    <EmbeddedResource Include="Contorol\CmbEmployee2.resx">
-      <DependentUpon>CmbEmployee2.cs</DependentUpon>
+    <EmbeddedResource Include="Contorol\CmbEmployee.resx">
+      <DependentUpon>CmbEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contorol\CmbEmployees.resx">
+      <DependentUpon>CmbEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\EditMaster.resx">
       <DependentUpon>EditMaster.cs</DependentUpon>
@@ -158,8 +167,8 @@
     <EmbeddedResource Include="Contorol\CmbDate.resx">
       <DependentUpon>CmbDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Contorol\CmbEmployee.resx">
-      <DependentUpon>CmbEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="Contorol\CmbEmplo.resx">
+      <DependentUpon>CmbEmplo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contorol\CmbStampingType.resx">
       <DependentUpon>CmbStampingType.cs</DependentUpon>

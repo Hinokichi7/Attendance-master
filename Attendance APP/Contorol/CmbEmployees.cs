@@ -12,21 +12,22 @@ using System.Windows.Forms;
 
 namespace Attendance_APP
 {
-    public partial class CmbEmployee2 : UserControl
+    public partial class CmbEmployees : UserControl
     {
         private List<DepartmentDto> SelectedDepartment { get; set; }
         public List<EmployeeDto> SelectedEmployees { get; set; }
-        public CmbEmployee2()
+
+        public CmbEmployees()
         {
             InitializeComponent();
             this.SetCmbDepartment();
         }
 
-        public void SetCmbDepartment()
+        private void SetCmbDepartment()
         {
             cmb_department.Items.Add("(全部署)");
             var departments = new DepartmentDao().GetAllDepartment();
-            foreach(var department in departments)
+            foreach (var department in departments)
             {
                 cmb_department.Items.Add(department.Name);
             }
@@ -37,19 +38,11 @@ namespace Attendance_APP
             if (cmb_department.SelectedIndex == 0)
             {
                 this.SelectedDepartment = new DepartmentDao().GetAllDepartment();
-            }else
+            } else
             {
-                this.SelectedDepartment[0] = new DepartmentDao().GetAllDepartment().Find(department => department.Name == cmb_department.SelectedItem.ToString());
+                this.SelectedDepartment = new DepartmentDao().GetSelectedDepartment(cmb_department.SelectedItem.ToString());
             }
         }
-
-        //private void SetSelectedDepartment()
-        //{
-        //    if (cmb_department.SelectedIndex != 0)
-        //    {
-        //        this.SelectedDepartment = new DepartmentDao().GetAllDepartment().Find(department => department.Name == cmb_department.SelectedItem.ToString());
-        //    }
-        //}
 
 
         private void cmb_department_SelectionChangeCommitted(object sender, EventArgs e)
@@ -59,11 +52,21 @@ namespace Attendance_APP
             this.SetCmbEmployee();
         }
 
-        public void SetCmbEmployee()
+        public List<int> GetDepartmentCodes()
         {
-            if(cmb_department.SelectedIndex == 0)
+            List<int> departmentCodes = new List<int>();
+            foreach (var department in this.SelectedDepartment)
             {
-                cmb_employee.Items.Add("(全員)");
+                departmentCodes.Add(department.Code);
+            }
+            return departmentCodes;
+        }
+
+        private void SetCmbEmployee()
+        {
+            cmb_employee.Items.Add("(全員)");
+            if (cmb_department.SelectedIndex == 0)
+            {
                 List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
                 foreach (var employee in employees)
                 {
@@ -72,42 +75,41 @@ namespace Attendance_APP
             }
             else
             {
-                cmb_employee.Items.Add("(全員)");
-                this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployee(this.SelectedDepartment[0].Code);
-                foreach(var employee in this.SelectedEmployees)
+                this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployee(this.GetDepartmentCodes());
+                foreach (var employee in this.SelectedEmployees)
                 {
                     cmb_employee.Items.Add(employee.Name);
                 }
             }
         }
 
-        public void GetSelectedEmployee()
+        public List<int> GetEmployeeCodes()
+        {
+            List<int> employeeCodes = new List<int>();
+            foreach (var employee in this.SelectedEmployees)
+            {
+                employeeCodes.Add(employee.Code);
+            }
+            return employeeCodes;
+        }
+
+        public void SetSelectedEmployee()
         {
             if (cmb_employee.SelectedIndex == 0)
             {
-                this.SelectedEmployees = new EmployeeDao().GetAllEmployee();
+                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
             }
             else
             {
-                this.SelectedEmployees[0] = this.SelectedEmployees.Find(employee => employee.Name == cmb_employee.SelectedItem.ToString());
+                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
             }
         }
 
+
         private void cmb_employee_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            this.GetSelectedEmployee();
+            this.SetSelectedEmployee();
         }
-
-
-
-
-        //public void GetSelectedEmployee()
-        //{
-        //    if(cmb_employee.SelectedIndex != 0)
-        //    {
-        //        this.SelectedEmployees[0] = this.SelectedEmployees.Find(employee => employee.Name == cmb_employee.SelectedItem.ToString());
-        //    }
-        //}
 
     }
 }

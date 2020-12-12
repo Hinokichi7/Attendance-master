@@ -1,56 +1,62 @@
-﻿using System;
+﻿using Attendance_APP.Dao;
+using Attendance_APP.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Attendance_APP.Dao;
-using Attendance_APP.Dto;
-using Attendance_APP.Admin;
 
 namespace Attendance_APP
 {
     public partial class CmbEmployee : UserControl
     {
-        public event EventHandler StatusUpdated;
-        private List<EmployeeDto> EmployeeList { get; set; }
-        //public event EventHandler ComboBoxSelectionChangeCommitted;
+        private List<DepartmentDto> SelectedDepartment { get; set; }
+        public List<EmployeeDto> SelectedEmployees { get; set; }
 
         public CmbEmployee()
         {
             InitializeComponent();
-            this.EmployeeList = new EmployeeDao().GetAllEmployee();
-            this.SetCmbEmployee();
+            this.SetCmbDepartment();
         }
 
-        public void SetCmbEmployee()
+        private void SetCmbDepartment()
         {
-            cmb_employee.DataSource = new EmployeeDao().GetAllEmployee();
+            cmb_department.DataSource = new DepartmentDao().GetAllDepartment();
+            cmb_department.ValueMember = "Name";
+            cmb_department.DisplayMember = "Name";
+        }
+
+        private void SetSelectedDepaetment()
+        {
+            this.SelectedDepartment = new DepartmentDao().GetSelectedDepartment(cmb_department.SelectedValue.ToString());
+            this.
+        }
+
+        private void cmb_department_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            this.SetSelectedDepaetment();
+        }
+
+        public List<int> GetDepaetmentCodes()
+        {
+            List<int> departmentCodes = new List<int>();
+            foreach (var department in this.SelectedDepartment)
+            {
+                departmentCodes.Add(department.Code);
+            }
+            return departmentCodes;
+        }
+
+        private void SetCmbEmployee()
+        {
+            this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployee(this.GetDepaetmentCodes());
+            cmb_employee.DataSource = this.SelectedEmployees;
             cmb_employee.ValueMember = "Code";
             cmb_employee.DisplayMember = "Name";
-            cmb_employee.SelectedIndex = -1;
-        }
-        public EmployeeDto GetSelectedEmployee()
-        {
-            if (cmb_employee.SelectedIndex == -1)
-            {
-                return null;
-            }
-            return this.EmployeeList.Find(employee => employee.Code == int.Parse(cmb_employee.SelectedValue.ToString()));
-        }
-
-        private void cmb_employee_SelectionChangeCommitted_1(object sender, EventArgs e)
-        {
-            if (this.StatusUpdated != null)
-                this.StatusUpdated(this, new EventArgs());
-            var employee = this.GetSelectedEmployee();
-            if (employee != null)
-            {
-                departmentName.Text = new DepartmentDao().GetAllDepartment().Find(department => department.Code == employee.DepartmentCode).Name;
-            }
         }
     }
 }

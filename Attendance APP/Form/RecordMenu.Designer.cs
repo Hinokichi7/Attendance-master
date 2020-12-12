@@ -36,7 +36,7 @@
             this.edit = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.NewRecord = new System.Windows.Forms.Button();
-            this.cmbEmployee21 = new Attendance_APP.CmbEmployee2();
+            this.cmbEmployee21 = new Attendance_APP.CmbEmployees();
             this.cmbDate2 = new Attendance_APP.CmbDate();
             this.cmbDate1 = new Attendance_APP.CmbDate();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -177,6 +177,6 @@
         private System.Windows.Forms.Button NewRecord;
         private CmbDate cmbDate1;
         private CmbDate cmbDate2;
-        private CmbEmployee2 cmbEmployee21;
+        private CmbEmployees cmbEmployee21;
     }
 }

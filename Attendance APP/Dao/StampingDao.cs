@@ -113,7 +113,7 @@ namespace Attendance_APP.Dao
             string inValue = string.Join(",", employeeCodes);
             sql.Append("employeeCode IN(" + inValue + ") ");
             // 条件②:期間
-            sql.Append("AND attendance BETWEEN '" + startPoint + "' AND '" + @endPoint + "' ");
+            sql.Append("AND attendance BETWEEN '" + startPoint + "' AND '" + endPoint + "' ");
             // 条件③:表示変更
             sql.Append("AND tbS.employeeCode = tbE.Code ");
             sql.Append("AND tbS.stampingCode = tbST.stampingCode");

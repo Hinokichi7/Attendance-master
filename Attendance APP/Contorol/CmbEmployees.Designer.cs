@@ -1,7 +1,7 @@
 ﻿
 namespace Attendance_APP
 {
-    partial class CmbEmployee2
+    partial class CmbEmployees
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

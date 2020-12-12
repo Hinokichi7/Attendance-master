@@ -44,7 +44,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.remark = new System.Windows.Forms.TextBox();
             this.cmbStampingType1 = new Attendance_APP.Contorol.CmbStampingType();
-            this.cmbEmployee1 = new Attendance_APP.CmbEmployee();
+            this.cmbEmployee1 = new Attendance_APP.CmbEmplo();
             this.cmbDate1 = new Attendance_APP.CmbDate();
             this.SuspendLayout();
             // 
@@ -261,7 +261,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox remark;
         private CmbDate cmbDate1;
-        private CmbEmployee cmbEmployee1;
+        private CmbEmplo cmbEmployee1;
         private Contorol.CmbStampingType cmbStampingType1;
     }
 }
