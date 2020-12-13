@@ -93,12 +93,6 @@
     <Compile Include="Contorol\CmbDate.Designer.cs">
       <DependentUpon>CmbDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contorol\CmbEmplo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Contorol\CmbEmplo.Designer.cs">
-      <DependentUpon>CmbEmplo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Contorol\CmbStampingType.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contorol\CmbDate.resx">
       <DependentUpon>CmbDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Contorol\CmbEmplo.resx">
-      <DependentUpon>CmbEmplo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contorol\CmbStampingType.resx">
       <DependentUpon>CmbStampingType.cs</DependentUpon>

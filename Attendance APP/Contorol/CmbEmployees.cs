@@ -95,7 +95,11 @@ namespace Attendance_APP
 
         public void SetSelectedEmployee()
         {
-            if (cmb_employee.SelectedIndex == 0)
+            if(cmb_department.SelectedIndex == 0 && cmb_employee.SelectedIndex == 0)
+            {
+                this.SelectedEmployees = new EmployeeDao().GetAllEmployee();
+            }
+            else if (cmb_employee.SelectedIndex == 0)
             {
                 this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
             }

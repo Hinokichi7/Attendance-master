@@ -116,7 +116,8 @@ namespace Attendance_APP.Dao
             sql.Append("AND attendance BETWEEN '" + startPoint + "' AND '" + endPoint + "' ");
             // 条件③:表示変更
             sql.Append("AND tbS.employeeCode = tbE.Code ");
-            sql.Append("AND tbS.stampingCode = tbST.stampingCode");
+            sql.Append("AND tbS.stampingCode = tbST.stampingCode ");
+            sql.Append("ORDER BY employeeCode, attendance");
 
 
             // 社員を指定して最新の打刻データを読み込み
