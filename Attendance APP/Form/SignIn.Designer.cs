@@ -53,9 +53,9 @@
             this.label1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(12, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 18);
+            this.label1.Size = new System.Drawing.Size(236, 18);
             this.label1.TabIndex = 2;
-            this.label1.Text = "社員コードとパスワードを入力して下さい。";
+            this.label1.Text = "社員番号とパスワードを入力して下さい。";
             // 
             // label2
             // 
@@ -101,9 +101,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 12);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 5;
-            this.label3.Text = "社員コード";
+            this.label3.Text = "社員番号";
             // 
             // label4
             // 

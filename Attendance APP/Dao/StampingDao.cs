@@ -91,6 +91,7 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT ");
             // カラム
+            sql.Append("tbD.name, ");
             sql.Append("tbS.id, ");
             sql.Append("tbS.employeeCode, ");
             sql.Append("tbE.Name, ");
@@ -106,7 +107,8 @@ namespace Attendance_APP.Dao
             // テーブル
             sql.Append("FROM Attendance.dbo.Stamping as tbS, ");
             sql.Append("Attendance.dbo.StampingType as tbST, ");
-            sql.Append("Attendance.dbo.Employee as tbE ");
+            sql.Append("Attendance.dbo.Employee as tbE, ");
+            sql.Append("Attendance.dbo.Department as tbD ");
 
             sql.Append("WHERE ");
             // 条件①:社員コード
@@ -116,7 +118,9 @@ namespace Attendance_APP.Dao
             sql.Append("AND attendance BETWEEN '" + startPoint + "' AND '" + endPoint + "' ");
             // 条件③:表示変更
             sql.Append("AND tbS.employeeCode = tbE.Code ");
+            sql.Append("AND tbE.departmentCode = tbD.Code ");
             sql.Append("AND tbS.stampingCode = tbST.stampingCode ");
+            // ソート
             sql.Append("ORDER BY employeeCode, attendance");
 
 

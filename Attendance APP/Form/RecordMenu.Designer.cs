@@ -84,6 +84,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(11, 129);
             this.dataGridView1.Name = "dataGridView1";
@@ -125,6 +126,7 @@
             // 
             this.cmbEmployee21.Location = new System.Drawing.Point(11, 12);
             this.cmbEmployee21.Name = "cmbEmployee21";
+            this.cmbEmployee21.SelectedEmployees = null;
             this.cmbEmployee21.Size = new System.Drawing.Size(168, 67);
             this.cmbEmployee21.TabIndex = 23;
             // 
@@ -142,7 +144,7 @@
             this.cmbDate1.Size = new System.Drawing.Size(264, 38);
             this.cmbDate1.TabIndex = 21;
             // 
-            // EditRecordMenu
+            // RecordMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,7 +160,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.search);
-            this.Name = "EditRecordMenu";
+            this.Name = "RecordMenu";
             this.Text = "EditRecord";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

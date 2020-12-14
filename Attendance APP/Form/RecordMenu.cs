@@ -31,9 +31,24 @@ namespace Attendance_APP.Admin
             {
                 this.StampingTable = new StampingDao().GetSerchedStamping2(cmbEmployee21.GetEmployeeCodes(), startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
+
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+
                 dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["id"].Visible = false;
+                dataGridView1.Columns["stampingCode"].Visible = false;
+                dataGridView1.Columns["name"].HeaderText = "部署";
+                dataGridView1.Columns["employeeCode"].HeaderText = "社員番号";
+                dataGridView1.Columns["Name1"].HeaderText = "氏名";
+                dataGridView1.Columns["year"].HeaderText = "年";
+                dataGridView1.Columns["month"].HeaderText = "月";
+                dataGridView1.Columns["day"].HeaderText = "日";
+                dataGridView1.Columns["attendance"].HeaderText = "出勤時間";
+                dataGridView1.Columns["leavingWork"].HeaderText = "退勤時間";
+                dataGridView1.Columns["StampingName"].HeaderText = "勤務種別";
+                dataGridView1.Columns["workingHours"].HeaderText = "勤務時間";
+                dataGridView1.Columns["remark"].HeaderText = "備考";
 
                 if (dataGridView1.Rows.Count == 0)
                 {
