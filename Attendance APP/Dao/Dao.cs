@@ -9,7 +9,7 @@ namespace Attendance_APP.Dao
 {
     class Dao
     {
-        private const string DATA_SOURCE = "DESKTOP-NS328PO";
+        private const string DATA_SOURCE = ".\\SQLEXPRESS";
         private const string USER_ID = "sa";
         private const string PASSWORD = "admin";
         private const string INITIAL_CATALOG = "master";
