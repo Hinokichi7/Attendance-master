@@ -58,7 +58,7 @@ namespace Attendance_APP
             cmb_employee.DataSource = this.SelectedEmployees;
             cmb_employee.ValueMember = "Code";
             cmb_employee.DisplayMember = "Name";
-            cmb_department.SelectedIndex = -1;
+            cmb_employee.SelectedIndex = -1;
         }
 
         public List<int> GetEmployeeCodes()
