@@ -14,25 +14,39 @@ namespace Attendance_APP
 {
     public partial class SignIn : Form
     {
-        public EmployeeDto Employee { get; set; }
+        //public EmployeeDto Employee { get; set; }
         public SignIn()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        // パスワード照合
+        // ID・パスワード照合
         private EmployeeDto GetEmployee()
         {
             try
             {
-                return new EmployeeDao().GetAllEmployee().Find(employee => employee.Password == tb_password.Text);
+                int code = int.Parse(tb_code.Text);
+                List<int> codes = new List<int>();
+                codes.Add(code);
+                EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(codes)[0];
+                if(employee.Password == tb_password.Text)
+                {
+                    return employee;
+                }
+                else
+                {
+                    MessageBox.Show("パスワードが正しくありません。");
+                    return null;
+                }
             }
             catch
             {
+                MessageBox.Show("IDが正しくありません。");
                 return null;
             }
         }
+
 
 
         private void btn_stamping_Click_1(object sender, EventArgs e)
@@ -41,12 +55,13 @@ namespace Attendance_APP
             if (employee != null)
             {
                 new Stamping(employee).ShowDialog(this);
+                tb_code.Text = "";
                 tb_password.Text = "";
             }
-            else
-            {
-                MessageBox.Show("正しいパスワードを入力してください。");
-            }
+            //else
+            //{
+            //    MessageBox.Show("正しいパスワードを入力してください。");
+            //}
         }
 
         private void btn_admin_Click(object sender, EventArgs e)
@@ -55,12 +70,13 @@ namespace Attendance_APP
             if (employee != null && employee.AdminFlug == 1)
             {
                 new AdminMenu(employee).ShowDialog(this);
+                tb_code.Text = "";
                 tb_password.Text = "";
             }
-            else
-            {
-                MessageBox.Show("正しいパスワードを入力してください。");
-            }
+            //else
+            //{
+            //    MessageBox.Show("正しいパスワードを入力してください。");
+            //}
         }
     }
 }

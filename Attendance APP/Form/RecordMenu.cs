@@ -31,9 +31,8 @@ namespace Attendance_APP.Admin
             {
                 this.StampingTable = new StampingDao().GetSerchedStamping2(cmbEmployee21.GetEmployeeCodes(), startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
-
+                //表示設定
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-
                 dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["id"].Visible = false;
@@ -50,11 +49,12 @@ namespace Attendance_APP.Admin
                 dataGridView1.Columns["workingHours"].HeaderText = "勤務時間";
                 dataGridView1.Columns["remark"].HeaderText = "備考";
 
+                // 検索結果0件の場合
                 if (dataGridView1.Rows.Count == 0)
                 {
                     MessageBox.Show("打刻データがありません。");
                 }
-            }
+            }// 検索条件が取得できなかった場合
             else
             {
                 MessageBox.Show("検索条件が正しく選択されていません。");

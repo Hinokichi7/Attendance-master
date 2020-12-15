@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_stamping = new System.Windows.Forms.Button();
             this.btn_admin = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_code = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -87,14 +87,14 @@
             this.btn_admin.UseVisualStyleBackColor = true;
             this.btn_admin.Click += new System.EventHandler(this.btn_admin_Click);
             // 
-            // textBox1
+            // tb_code
             // 
-            this.textBox1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(93, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(150, 24);
-            this.textBox1.TabIndex = 4;
+            this.tb_code.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tb_code.Location = new System.Drawing.Point(93, 81);
+            this.tb_code.Name = "tb_code";
+            this.tb_code.PasswordChar = '*';
+            this.tb_code.Size = new System.Drawing.Size(150, 24);
+            this.tb_code.TabIndex = 4;
             // 
             // label3
             // 
@@ -121,7 +121,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_code);
             this.Controls.Add(this.btn_admin);
             this.Controls.Add(this.btn_stamping);
             this.Controls.Add(this.label2);
@@ -141,7 +141,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_stamping;
         private System.Windows.Forms.Button btn_admin;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_code;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }
