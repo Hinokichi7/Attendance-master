@@ -1,7 +1,7 @@
 ﻿
 namespace Attendance_APP
 {
-    partial class EditMaster
+    partial class MasterMenu
     {
         /// <summary>
         /// Required designer variable.

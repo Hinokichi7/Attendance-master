@@ -27,9 +27,7 @@ namespace Attendance_APP
             try
             {
                 int code = int.Parse(tb_code.Text);
-                List<int> codes = new List<int>();
-                codes.Add(code);
-                EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(codes)[0];
+                EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(code);
                 if(employee.Password == tb_password.Text)
                 {
                     return employee;
@@ -58,10 +56,7 @@ namespace Attendance_APP
                 tb_code.Text = "";
                 tb_password.Text = "";
             }
-            //else
-            //{
-            //    MessageBox.Show("正しいパスワードを入力してください。");
-            //}
+
         }
 
         private void btn_admin_Click(object sender, EventArgs e)
@@ -73,10 +68,7 @@ namespace Attendance_APP
                 tb_code.Text = "";
                 tb_password.Text = "";
             }
-            //else
-            //{
-            //    MessageBox.Show("正しいパスワードを入力してください。");
-            //}
+
         }
     }
 }

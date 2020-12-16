@@ -51,11 +51,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form\EditMaster.cs">
+    <Compile Include="Form\MasterMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\EditMaster.Designer.cs">
-      <DependentUpon>EditMaster.cs</DependentUpon>
+    <Compile Include="Form\MasterMenu.Designer.cs">
+      <DependentUpon>MasterMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\Stamping.cs">
       <SubType>Form</SubType>
@@ -143,8 +143,8 @@
     <EmbeddedResource Include="Contorol\CmbEmployees.resx">
       <DependentUpon>CmbEmployees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\EditMaster.resx">
-      <DependentUpon>EditMaster.cs</DependentUpon>
+    <EmbeddedResource Include="Form\MasterMenu.resx">
+      <DependentUpon>MasterMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Stamping.resx">
       <DependentUpon>Stamping.cs</DependentUpon>

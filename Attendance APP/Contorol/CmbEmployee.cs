@@ -72,7 +72,7 @@ namespace Attendance_APP
         }
         public void SetSelectedEmployee()
         {
-            this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
+            this.SelectedEmployees = new EmployeeDao().GetSelectedEmployees(this.GetEmployeeCodes());
         }
 
 

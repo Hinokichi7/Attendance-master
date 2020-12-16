@@ -68,7 +68,32 @@ namespace Attendance_APP.Dao
             }
         }
 
-        public List<EmployeeDto> GetSelectedEmployee(List<int> employeeCodes)
+        public EmployeeDto GetSelectedEmployee(int employeeCode)
+        {
+            var dt = new DataTable();
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT * ");
+            sql.Append("FROM Attendance.dbo.Employee ");
+            sql.Append("WHERE ");
+            sql.Append("code = " + employeeCode );
+
+            using (var conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
+            {
+                conn.Open();
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                var dto = new EmployeeDto();
+                dto.Code = int.Parse("code".ToString());
+                dto.Name = "name".ToString();
+                dto.DepartmentCode = int.Parse("departmentCode".ToString());
+                dto.Password = "password".ToString();
+                dto.AdminFlug = int.Parse("adminFlug".ToString());
+                return dto;
+            }
+        }
+
+        public List<EmployeeDto> GetSelectedEmployees(List<int> employeeCodes)
         {
             var list = new List<EmployeeDto>();
             var dt = new DataTable();

@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Attendance_APP
 {
-    public partial class EditMaster : Form
+    public partial class MasterMenu : Form
     {
-        public EditMaster()
+        public MasterMenu()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
         }
     }
 }

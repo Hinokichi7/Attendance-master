@@ -101,11 +101,11 @@ namespace Attendance_APP
             }
             else if (cmb_employee.SelectedIndex == 0)
             {
-                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
+                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployees(this.GetEmployeeCodes());
             }
             else
             {
-                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployee(this.GetEmployeeCodes());
+                this.SelectedEmployees = new EmployeeDao().GetSelectedEmployees(this.GetEmployeeCodes());
             }
         }
 

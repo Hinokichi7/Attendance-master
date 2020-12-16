@@ -30,7 +30,7 @@
         {
             this.EditRecord = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.NewMaster = new System.Windows.Forms.Button();
+            this.EditMaester = new System.Windows.Forms.Button();
             this.Output = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -55,16 +55,17 @@
             this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 3;
             // 
-            // NewMaster
+            // EditMaester
             // 
-            this.NewMaster.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.NewMaster.Location = new System.Drawing.Point(75, 125);
-            this.NewMaster.Margin = new System.Windows.Forms.Padding(4);
-            this.NewMaster.Name = "NewMaster";
-            this.NewMaster.Size = new System.Drawing.Size(130, 40);
-            this.NewMaster.TabIndex = 2;
-            this.NewMaster.Text = "マスタ編集";
-            this.NewMaster.UseVisualStyleBackColor = true;
+            this.EditMaester.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.EditMaester.Location = new System.Drawing.Point(75, 125);
+            this.EditMaester.Margin = new System.Windows.Forms.Padding(4);
+            this.EditMaester.Name = "EditMaester";
+            this.EditMaester.Size = new System.Drawing.Size(130, 40);
+            this.EditMaester.TabIndex = 2;
+            this.EditMaester.Text = "マスタ編集";
+            this.EditMaester.UseVisualStyleBackColor = true;
+            this.EditMaester.Click += new System.EventHandler(this.EditMaester_Click);
             // 
             // Output
             // 
@@ -85,7 +86,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.NewMaster);
+            this.Controls.Add(this.EditMaester);
             this.Controls.Add(this.EditRecord);
             this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -99,7 +100,7 @@
         #endregion
         private System.Windows.Forms.Button EditRecord;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button NewMaster;
+        private System.Windows.Forms.Button EditMaester;
         private System.Windows.Forms.Button Output;
     }
 }
