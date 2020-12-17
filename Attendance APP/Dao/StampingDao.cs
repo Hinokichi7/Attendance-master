@@ -18,8 +18,9 @@ namespace Attendance_APP.Dao
                 StampingDto dto = new StampingDto();
 
                 dto.Id = int.Parse(dr["id"].ToString());
+                string dateTime = dr["attendance"].ToString();
                 dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
-                if (String.IsNullOrEmpty(dr["updateTime"].ToString()))
+                if (!String.IsNullOrEmpty(dr["updateTime"].ToString()))
                 {
                     dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
                 }
@@ -28,16 +29,16 @@ namespace Attendance_APP.Dao
                 dto.Month = int.Parse(dr["month"].ToString());
                 dto.Day = int.Parse(dr["day"].ToString());
                 dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
-                if (String.IsNullOrEmpty(dr["leavingWork"].ToString()))
+                if (!String.IsNullOrEmpty(dr["leavingWork"].ToString()))
                 {
                     dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
                 }
                 dto.StampingCode = int.Parse(dr["stampingCode"].ToString());
-                if (String.IsNullOrEmpty(dr["workingHours"].ToString()))
+                if (!String.IsNullOrEmpty(dr["workingHours"].ToString()))
                 {
                     dto.WorkingHours = int.Parse(dr["workingHours"].ToString());
                 }
-                if (String.IsNullOrEmpty(dr["remark"].ToString()))
+                if (!String.IsNullOrEmpty(dr["remark"].ToString()))
                 {
                     dto.Remark = dr["remark"].ToString();
                 }
@@ -164,10 +165,6 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT TOP 1 ");
             sql.Append("* FROM Attendance.dbo.Stamping ");
-            sql.Append("CONVERT(DATETIME, createTime ");
-            sql.Append("CONVERT(DATETIME, updateTime ");
-            sql.Append("CONVERT(DATETIME, attendance ");
-            sql.Append("CONVERT(DATETIME, leavingWork ");
             sql.Append("WHERE ");
             sql.Append("employeeCode = @employeeCode ");
             sql.Append("ORDER BY id DESC");
