@@ -33,7 +33,7 @@ namespace Attendance_APP.Dao
                     dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
                 }
                 dto.StampingCode = int.Parse(dr["stampingCode"].ToString());
-                if (String.IsNullOrEmpty(dr["workingHour"].ToString()))
+                if (String.IsNullOrEmpty(dr["workingHours"].ToString()))
                 {
                     dto.WorkingHours = int.Parse(dr["workingHours"].ToString());
                 }
@@ -164,10 +164,10 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT TOP 1 ");
             sql.Append("* FROM Attendance.dbo.Stamping ");
-            //sql.Append("CONVERT(DATETIME, createTime ");
-            //sql.Append("CONVERT(DATETIME, updateTime ");
-            //sql.Append("CONVERT(DATETIME, attendance ");
-            //sql.Append("CONVERT(DATETIME, leavingWork ");
+            sql.Append("CONVERT(DATETIME, createTime ");
+            sql.Append("CONVERT(DATETIME, updateTime ");
+            sql.Append("CONVERT(DATETIME, attendance ");
+            sql.Append("CONVERT(DATETIME, leavingWork ");
             sql.Append("WHERE ");
             sql.Append("employeeCode = @employeeCode ");
             sql.Append("ORDER BY id DESC");
