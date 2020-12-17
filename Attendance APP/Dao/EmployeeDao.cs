@@ -8,7 +8,6 @@ namespace Attendance_APP.Dao
 {
     class EmployeeDao : Dao
     {
-        // 戻り値List<employee>パラメーターにList<int>
         public List<EmployeeDto> GetAllEmployee()
         {
             var list = new List<EmployeeDto>();
@@ -35,25 +34,18 @@ namespace Attendance_APP.Dao
             }
         }
 
-        public List<EmployeeDto> GetDepartmentEmployee(List<int> departmentCodes)
+        // 複数検索用
+        public List<EmployeeDto> GetEmployees(List<int> codes, StringBuilder sql)
         {
             var list = new List<EmployeeDto>();
             var dt = new DataTable();
-
-            StringBuilder sql = new StringBuilder();
-            sql.Append("SELECT * ");
-            sql.Append("FROM Attendance.dbo.Employee ");
-            sql.Append("WHERE ");
-            string inValue = string.Join(",", departmentCodes);
-            sql.Append("departmentCode IN(" + inValue + ")");
-
             using (var conn = GetConnection())
-            using (SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
+            using(SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
             {
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
-                foreach (DataRow dr in dt.Rows)
+                foreach(DataRow dr in dt.Rows)
                 {
                     var dto = new EmployeeDto
                     {
@@ -68,7 +60,31 @@ namespace Attendance_APP.Dao
                 return list;
             }
         }
+        public List<EmployeeDto> GetDepartmentEmployees(List<int> departmentCodes)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT * ");
+            sql.Append("FROM Attendance.dbo.Employee ");
+            sql.Append("WHERE ");
+            string inValue = string.Join(",", departmentCodes);
+            sql.Append("departmentCode IN(" + inValue + ")");
 
+            return this.GetEmployees(departmentCodes, sql);
+        }
+
+        public List<EmployeeDto> GetSelectedEmployees(List<int> employeeCodes)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT * ");
+            sql.Append("FROM Attendance.dbo.Employee ");
+            sql.Append("WHERE ");
+            string inValue = string.Join(",", employeeCodes);
+            sql.Append("code IN(" + inValue + ")");
+
+            return this.GetEmployees(employeeCodes, sql);
+        }
+
+        // 一人検索用
         public EmployeeDto GetSelectedEmployee(int employeeCode)
         {
             var list = new List<EmployeeDto>();
@@ -98,40 +114,6 @@ namespace Attendance_APP.Dao
                     list.Add(dto);
                 }
                 return list[0];
-            }
-        }
-
-        public List<EmployeeDto> GetSelectedEmployees(List<int> employeeCodes)
-        {
-            var list = new List<EmployeeDto>();
-            var dt = new DataTable();
-
-            StringBuilder sql = new StringBuilder();
-            sql.Append("SELECT * ");
-            sql.Append("FROM Attendance.dbo.Employee ");
-            sql.Append("WHERE ");
-            string inValue = string.Join(",", employeeCodes);
-            sql.Append("code IN(" + inValue + ")");
-
-            using (var conn = GetConnection())
-            using (SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
-            {
-                conn.Open();
-                var adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    var dto = new EmployeeDto
-                    {
-                        Code = int.Parse(dr["code"].ToString()),
-                        Name = dr["name"].ToString(),
-                        DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
-                        Password = dr["password"].ToString(),
-                        AdminFlug = int.Parse(dr["adminFlug"].ToString())
-                    };
-                    list.Add(dto);
-                }
-                return list;
             }
         }
 

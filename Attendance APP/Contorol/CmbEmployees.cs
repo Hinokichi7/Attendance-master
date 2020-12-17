@@ -75,7 +75,7 @@ namespace Attendance_APP
             }
             else
             {
-                this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployee(this.GetDepartmentCodes());
+                this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployees(this.GetDepartmentCodes());
                 foreach (var employee in this.SelectedEmployees)
                 {
                     cmb_employee.Items.Add(employee.Name);

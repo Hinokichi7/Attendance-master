@@ -54,7 +54,7 @@ namespace Attendance_APP
 
         private void SetCmbEmployee()
         {
-            this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployee(this.GetDepaetmentCodes());
+            this.SelectedEmployees = new EmployeeDao().GetDepartmentEmployees(this.GetDepaetmentCodes());
             cmb_employee.DataSource = this.SelectedEmployees;
             cmb_employee.ValueMember = "Code";
             cmb_employee.DisplayMember = "Name";
