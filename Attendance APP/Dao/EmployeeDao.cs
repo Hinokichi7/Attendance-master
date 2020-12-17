@@ -34,10 +34,28 @@ namespace Attendance_APP.Dao
             }
         }
 
+        // DataTableをEmployeeDtoに変換
+        private List<EmployeeDto> SetEmployeeDto(DataTable dt)
+        {
+            var list = new List<EmployeeDto>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                EmployeeDto dto = new EmployeeDto
+                {
+                    Code = int.Parse(dr["code"].ToString()),
+                    Name = dr["name"].ToString(),
+                    DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
+                    Password = dr["password"].ToString(),
+                    AdminFlug = int.Parse(dr["adminFlug"].ToString())
+                };
+                list.Add(dto);
+            }
+            return list;
+        }
+
         // 複数検索用
         public List<EmployeeDto> GetEmployees(List<int> codes, StringBuilder sql)
         {
-            var list = new List<EmployeeDto>();
             var dt = new DataTable();
             using (var conn = GetConnection())
             using(SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
@@ -45,19 +63,7 @@ namespace Attendance_APP.Dao
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
-                foreach(DataRow dr in dt.Rows)
-                {
-                    var dto = new EmployeeDto
-                    {
-                        Code = int.Parse(dr["code"].ToString()),
-                        Name = dr["name"].ToString(),
-                        DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
-                        Password = dr["password"].ToString(),
-                        AdminFlug = int.Parse(dr["adminFlug"].ToString())
-                    };
-                    list.Add(dto);
-                }
-                return list;
+                return this.SetEmployeeDto(dt);
             }
         }
         public List<EmployeeDto> GetDepartmentEmployees(List<int> departmentCodes)
@@ -87,7 +93,6 @@ namespace Attendance_APP.Dao
         // 一人検索用
         public EmployeeDto GetSelectedEmployee(int employeeCode)
         {
-            var list = new List<EmployeeDto>();
             var dt = new DataTable();
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT * ");
@@ -101,19 +106,7 @@ namespace Attendance_APP.Dao
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    var dto = new EmployeeDto
-                    {
-                        Code = int.Parse(dr["code"].ToString()),
-                        Name = dr["name"].ToString(),
-                        DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
-                        Password = dr["password"].ToString(),
-                        AdminFlug = int.Parse(dr["adminFlug"].ToString())
-                    };
-                    list.Add(dto);
-                }
-                return list[0];
+                return this.SetEmployeeDto(dt)[0];
             }
         }
 
