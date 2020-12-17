@@ -10,9 +10,9 @@ namespace Attendance_APP.Dao
     {
         public List<EmployeeDto> GetAllEmployee()
         {
-            var list = new List<EmployeeDto>();
-            var dt = new DataTable();
-            using (var conn = GetConnection())
+            List<EmployeeDto> list = new List<EmployeeDto>();
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = GetConnection())
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Employee", conn))
             {
                 conn.Open();

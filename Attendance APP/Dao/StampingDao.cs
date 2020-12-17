@@ -12,62 +12,85 @@ namespace Attendance_APP.Dao
     {
         public List<StampingDto> SetStampingDto(DataTable dt)
         {
-            var list = new List<StampingDto>();
-            foreach (DataRow dr in dt.Rows)
+            List<StampingDto> list = new List<StampingDto>();
+            foreach(DataRow dr in dt.Rows)
             {
-                var dto = new StampingDto();
-                if (dt.Columns.Contains("id"))
-                {
-                    dto.Id = int.Parse(dr["id"].ToString());
-                }
-                if (dt.Columns.Contains("createTime"))
-                {
-                    dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
-                }
-                if (dt.Columns.Contains("updateTime") && !String.IsNullOrEmpty(dr["updateTime"].ToString()))
-                {
-                    dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
-                }
-                if (dt.Columns.Contains("employeeCode"))
-                {
-                    dto.EmployeeCode = int.Parse(dr["employeeCode"].ToString());
-                }
-                if (dt.Columns.Contains("year"))
-                {
-                    dto.Year = int.Parse(dr["year"].ToString());
-                }
-                if (dt.Columns.Contains("month"))
-                {
-                    dto.Month = int.Parse(dr["month"].ToString());
-                }
-                if (dt.Columns.Contains("day"))
-                {
-                    dto.Day = int.Parse(dr["day"].ToString());
-                }
-                if (dt.Columns.Contains("attendance"))
-                {
-                    dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
-                }
-                if (dt.Columns.Contains("stampingCode"))
-                {
-                    dto.StampingCode = int.Parse(dr["stampingcode"].ToString());
-                }
-                if (dt.Columns.Contains("leavingWork") && !String.IsNullOrEmpty(dr["leavingWork"].ToString()))
-                {
-                    dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
-                }
-                if (dt.Columns.Contains("workingHours") && !String.IsNullOrEmpty(dr["workingHours"].ToString()))
-                {
-                    dto.WorkingHours = double.Parse(dr["workingHours"].ToString());
-                }
-                if (dt.Columns.Contains("remark") && !String.IsNullOrEmpty(dr["remark"].ToString()))
-                {
-                    dto.Remark = dr["remark"].ToString();
-                }
+                StampingDto dto = new StampingDto();
+
+                dto.Id = int.Parse(dr["id"].ToString());
+                dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
+                dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
+                dto.EmployeeCode = int.Parse(dr["employeeCode"].ToString());
+                dto.Year = int.Parse(dr["year"].ToString());
+                dto.Month = int.Parse(dr["month"].ToString());
+                dto.Day = int.Parse(dr["day"].ToString());
+                dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
+                dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
+                dto.StampingCode = int.Parse(dr["stampingCode"].ToString());
+                dto.WorkingHours = int.Parse(dr["workingHours"].ToString());
+
                 list.Add(dto);
             }
             return list;
         }
+        //public List<StampingDto> SetStampingDto(DataTable dt)
+        //{
+        //    var list = new List<StampingDto>();
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        var dto = new StampingDto();
+        //        if (dt.Columns.Contains("id"))
+        //        {
+        //            dto.Id = int.Parse(dr["id"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("createTime"))
+        //        {
+        //            dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("updateTime") && !String.IsNullOrEmpty(dr["updateTime"].ToString()))
+        //        {
+        //            dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("employeeCode"))
+        //        {
+        //            dto.EmployeeCode = int.Parse(dr["employeeCode"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("year"))
+        //        {
+        //            dto.Year = int.Parse(dr["year"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("month"))
+        //        {
+        //            dto.Month = int.Parse(dr["month"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("day"))
+        //        {
+        //            dto.Day = int.Parse(dr["day"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("attendance"))
+        //        {
+        //            dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("stampingCode"))
+        //        {
+        //            dto.StampingCode = int.Parse(dr["stampingcode"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("leavingWork") && !String.IsNullOrEmpty(dr["leavingWork"].ToString()))
+        //        {
+        //            dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("workingHours") && !String.IsNullOrEmpty(dr["workingHours"].ToString()))
+        //        {
+        //            dto.WorkingHours = double.Parse(dr["workingHours"].ToString());
+        //        }
+        //        if (dt.Columns.Contains("remark") && !String.IsNullOrEmpty(dr["remark"].ToString()))
+        //        {
+        //            dto.Remark = dr["remark"].ToString();
+        //        }
+        //        list.Add(dto);
+        //    }
+        //    return list;
+        //}
 
         //public DataTable GetSerchedStamping(int employeeCode, string startPoint, string endPoint)
         //{
@@ -140,10 +163,21 @@ namespace Attendance_APP.Dao
 
         public StampingDto GetLatestStamping(int employeeCode)
         {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT TOP 1 ");
+            sql.Append("* FROM Attendance.dbo.Stamping ");
+            //sql.Append("CONVERT(DATETIME, createTime ");
+            //sql.Append("CONVERT(DATETIME, updateTime ");
+            //sql.Append("CONVERT(DATETIME, attendance ");
+            //sql.Append("CONVERT(DATETIME, leavingWork ");
+            sql.Append("WHERE ");
+            sql.Append("employeeCode = @employeeCode ");
+            sql.Append("ORDER BY id DESC");
+
             // 社員を指定して最新の打刻データを読み込み
             var dt = new DataTable();
             using (var conn = GetConnection())
-            using (var cmd = new SqlCommand("SELECT TOP 1 * FROM Attendance.dbo.Stamping WHERE employeeCode = @employeeCode ORDER BY id DESC", conn))
+            using (var cmd = new SqlCommand(sql.ToString(), conn))
             {
                 cmd.Parameters.AddWithValue("@employeeCode", employeeCode);
 
