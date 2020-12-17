@@ -40,7 +40,7 @@ namespace Attendance_APP.Admin
             var endPoint = cmbDate2.GetSelectedPoint();
             if (this.Employees != null && cmbDate1.GetSelectedDate() <= cmbDate2.GetSelectedDate())
             {
-                this.StampingTable = new StampingDao().GetSerchedStamping2(cmbEmployee21.GetEmployeeCodes(), startPoint, endPoint);
+                this.StampingTable = new StampingDao().GetSerchedStamping(cmbEmployee21.GetEmployeeCodes(), startPoint, endPoint);
                 dataGridView1.DataSource = this.StampingTable;
                 //表示設定
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;

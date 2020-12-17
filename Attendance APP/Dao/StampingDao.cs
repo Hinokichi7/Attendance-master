@@ -19,15 +19,28 @@ namespace Attendance_APP.Dao
 
                 dto.Id = int.Parse(dr["id"].ToString());
                 dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
-                dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
+                if (String.IsNullOrEmpty(dr["updateTime"].ToString()))
+                {
+                    dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
+                }
                 dto.EmployeeCode = int.Parse(dr["employeeCode"].ToString());
                 dto.Year = int.Parse(dr["year"].ToString());
                 dto.Month = int.Parse(dr["month"].ToString());
                 dto.Day = int.Parse(dr["day"].ToString());
                 dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
-                dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
+                if (String.IsNullOrEmpty(dr["leavingWork"].ToString()))
+                {
+                    dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
+                }
                 dto.StampingCode = int.Parse(dr["stampingCode"].ToString());
-                dto.WorkingHours = int.Parse(dr["workingHours"].ToString());
+                if (String.IsNullOrEmpty(dr["workingHour"].ToString()))
+                {
+                    dto.WorkingHours = int.Parse(dr["workingHours"].ToString());
+                }
+                if (String.IsNullOrEmpty(dr["remark"].ToString()))
+                {
+                    dto.Remark = dr["remark"].ToString();
+                }
 
                 list.Add(dto);
             }
@@ -92,24 +105,9 @@ namespace Attendance_APP.Dao
         //    return list;
         //}
 
-        //public DataTable GetSerchedStamping(int employeeCode, string startPoint, string endPoint)
-        //{
-        //    // 社員を指定して最新の打刻データを読み込み
-        //    var dt = new DataTable();
-        //    using (var conn = GetConnection())
-        //    using (var cmd = new SqlCommand("SELECT x.id, year, month, day, attendance, leavingWork, x.stampingCode, stampingName, workingHours, remark FROM Attendance.dbo.Stamping as x, Attendance.dbo.StampingType as y WHERE x.stampingCode = y.stampingCode AND employeeCode = @employeeCode AND attendance BETWEEN @startPoint AND @endPoint", conn))
-        //    {
-        //        cmd.Parameters.AddWithValue("@employeeCode", employeeCode);
-        //        cmd.Parameters.AddWithValue("@startPoint", startPoint);
-        //        cmd.Parameters.AddWithValue("@endPoint", endPoint);
-        //        conn.Open();
-        //        var adapter = new SqlDataAdapter(cmd);
-        //        adapter.Fill(dt);
-        //        return dt;
-        //    }
-        //}
 
-        public DataTable GetSerchedStamping2(List<int> employeeCodes, string startPoint, string endPoint)
+
+        public DataTable GetSerchedStamping(List<int> employeeCodes, string startPoint, string endPoint)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT ");
@@ -184,6 +182,15 @@ namespace Attendance_APP.Dao
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    return null;
+                }
+                List<StampingDto> ListStamping = this.SetStampingDto(dt);
+                return (ListStamping[0]);
+                //mori-mod
+                /*
                 if (this.SetStampingDto(dt).Count != 0)
                 {
                 return this.SetStampingDto(dt)[0];
@@ -192,6 +199,8 @@ namespace Attendance_APP.Dao
                 {
                     return null;
                 }
+                */
+                //mori-mod-end
             }
         }
 
