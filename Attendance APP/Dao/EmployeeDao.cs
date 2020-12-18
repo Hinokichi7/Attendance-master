@@ -10,7 +10,6 @@ namespace Attendance_APP.Dao
     {
         public List<EmployeeDto> GetAllEmployee()
         {
-            List<EmployeeDto> list = new List<EmployeeDto>();
             DataTable dt = new DataTable();
             using (SqlConnection conn = GetConnection())
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Employee", conn))
@@ -18,19 +17,7 @@ namespace Attendance_APP.Dao
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    var dto = new EmployeeDto
-                    {
-                        Code = int.Parse(dr["code"].ToString()),
-                        Name = dr["name"].ToString(),
-                        DepartmentCode = int.Parse(dr["departmentCode"].ToString()),
-                        Password = dr["password"].ToString(),
-                        AdminFlug = int.Parse(dr["adminFlug"].ToString())
-                    };
-                    list.Add(dto);
-                }
-                return list;
+                return this.SetEmployeeDto(dt);
             }
         }
 
@@ -109,6 +96,7 @@ namespace Attendance_APP.Dao
                 return this.SetEmployeeDto(dt)[0];
             }
         }
+
 
     }
 }

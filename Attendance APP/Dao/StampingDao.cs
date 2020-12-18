@@ -18,8 +18,10 @@ namespace Attendance_APP.Dao
                 StampingDto dto = new StampingDto();
 
                 dto.Id = int.Parse(dr["id"].ToString());
-                string dateTime = dr["attendance"].ToString();
-                dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
+                if (!String.IsNullOrEmpty(dr["createTime"].ToString()))
+                {
+                    dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
+                }
                 if (!String.IsNullOrEmpty(dr["updateTime"].ToString()))
                 {
                     dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
@@ -47,66 +49,6 @@ namespace Attendance_APP.Dao
             }
             return list;
         }
-        //public List<StampingDto> SetStampingDto(DataTable dt)
-        //{
-        //    var list = new List<StampingDto>();
-        //    foreach (DataRow dr in dt.Rows)
-        //    {
-        //        var dto = new StampingDto();
-        //        if (dt.Columns.Contains("id"))
-        //        {
-        //            dto.Id = int.Parse(dr["id"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("createTime"))
-        //        {
-        //            dto.CreateTime = DateTime.Parse(dr["createTime"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("updateTime") && !String.IsNullOrEmpty(dr["updateTime"].ToString()))
-        //        {
-        //            dto.UpdateTime = DateTime.Parse(dr["updateTime"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("employeeCode"))
-        //        {
-        //            dto.EmployeeCode = int.Parse(dr["employeeCode"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("year"))
-        //        {
-        //            dto.Year = int.Parse(dr["year"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("month"))
-        //        {
-        //            dto.Month = int.Parse(dr["month"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("day"))
-        //        {
-        //            dto.Day = int.Parse(dr["day"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("attendance"))
-        //        {
-        //            dto.Attendance = DateTime.Parse(dr["attendance"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("stampingCode"))
-        //        {
-        //            dto.StampingCode = int.Parse(dr["stampingcode"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("leavingWork") && !String.IsNullOrEmpty(dr["leavingWork"].ToString()))
-        //        {
-        //            dto.LeavingWork = DateTime.Parse(dr["leavingWork"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("workingHours") && !String.IsNullOrEmpty(dr["workingHours"].ToString()))
-        //        {
-        //            dto.WorkingHours = double.Parse(dr["workingHours"].ToString());
-        //        }
-        //        if (dt.Columns.Contains("remark") && !String.IsNullOrEmpty(dr["remark"].ToString()))
-        //        {
-        //            dto.Remark = dr["remark"].ToString();
-        //        }
-        //        list.Add(dto);
-        //    }
-        //    return list;
-        //}
-
-
 
         public DataTable GetSerchedStamping(List<int> employeeCodes, string startPoint, string endPoint)
         {
@@ -158,6 +100,21 @@ namespace Attendance_APP.Dao
             }
         }
 
+        public List<StampingDto> GetTermStamping(string startPoint, string endPoint)
+        {
+            // 期間(文字列で指定)データを取得
+            var dt = new DataTable();
+            using (var conn = GetConnection())
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Stamping WHERE attendance BETWEEN @startPoint AND @endPoint", conn))
+            {
+                cmd.Parameters.AddWithValue("@startPoint", startPoint);
+                cmd.Parameters.AddWithValue("@endPoint", endPoint);
+                conn.Open();
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                return this.SetStampingDto(dt);
+            }
+        }
 
 
         public StampingDto GetLatestStamping(int employeeCode)
@@ -186,49 +143,10 @@ namespace Attendance_APP.Dao
                 }
                 List<StampingDto> ListStamping = this.SetStampingDto(dt);
                 return (ListStamping[0]);
-                //mori-mod
-                /*
-                if (this.SetStampingDto(dt).Count != 0)
-                {
-                return this.SetStampingDto(dt)[0];
-                }
-                else
-                {
-                    return null;
-                }
-                */
-                //mori-mod-end
             }
         }
 
-        public List<StampingDto> GetStampingYears()
-        {
-            var dt = new DataTable();
-            using (var conn = GetConnection())
-            using (var cmd = new SqlCommand("SELECT year FROM Attendance.dbo.Stamping GROUP BY year", conn))
-            {
-                conn.Open();
-                var adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-                return this.SetStampingDto(dt);
-            }
-        }
 
-        public List<StampingDto> GetTermStamping(string startPoint, string endPoint)
-        {
-            // 期間(文字列で指定)データを取得
-            var dt = new DataTable();
-            using (var conn = GetConnection())
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Stamping WHERE attendance BETWEEN @startPoint AND @endPoint", conn))
-            {
-                cmd.Parameters.AddWithValue("@startPoint", startPoint);
-                cmd.Parameters.AddWithValue("@endPoint", endPoint);
-                conn.Open();
-                var adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-                return this.SetStampingDto(dt);
-            }
-        }
 
         public void AddStamping(StampingDto dto)
         {

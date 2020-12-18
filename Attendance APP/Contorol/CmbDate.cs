@@ -23,18 +23,12 @@ namespace Attendance_APP
         private void InitializeCmbBox()
         {
             // cmbに設定・表示
-            this.SetCmbYear2(cmb_year);
+            this.SetCmbYear(cmb_year);
             this.SetCmbBox(cmb_month, 12);
         }
 
+
         public void SetCmbYear(ComboBox cmb)
-        {
-            cmb.DataSource = new StampingDao().GetStampingYears();
-            cmb.ValueMember = "Year";
-            cmb.DisplayMember = "Year";
-            cmb.SelectedIndex = 0;
-        }
-        public void SetCmbYear2(ComboBox cmb)
         {
             //var tarm = 10;
             //var years = new List<int>(tarm);

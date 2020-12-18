@@ -26,14 +26,14 @@ namespace Attendance_APP
         private void SetCmbDepartment()
         {
             cmb_department.DataSource = new DepartmentDao().GetAllDepartment();
-            cmb_department.ValueMember = "Name";
+            cmb_department.ValueMember = "Code";
             cmb_department.DisplayMember = "Name";
             cmb_department.SelectedIndex = -1;
         }
 
         private void SetSelectedDepaetment()
         {
-            this.SelectedDepartment = new DepartmentDao().GetSelectedDepartment(cmb_department.SelectedValue.ToString());
+            this.SelectedDepartment = new DepartmentDao().GetSelectedDepartment(int.Parse(cmb_department.SelectedValue.ToString()));
         }
 
         private void cmb_department_SelectionChangeCommitted(object sender, EventArgs e)

@@ -33,14 +33,14 @@ namespace Attendance_APP.Dao
             }
         }
 
-        public List<DepartmentDto> GetSelectedDepartment(string Name)
+        public List<DepartmentDto> GetSelectedDepartment(int code)
         {
             var list = new List<DepartmentDto>();
             var dt = new DataTable();
             using (var conn = GetConnection())
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Department WHERE name = @name", conn))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Department WHERE code = @code", conn))
             {
-                cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@code", code);
                 conn.Open();
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
