@@ -34,13 +34,13 @@ namespace Attendance_APP
                 }
                 else
                 {
-                    MessageBox.Show("パスワードが正しくありません。");
+                    MessageBox.Show("IDかパスワードが正しくありません。");
                     return null;
                 }
             }
             catch
             {
-                MessageBox.Show("IDが正しくありません。");
+                MessageBox.Show("IDかパスワードが正しくありません。");
                 return null;
             }
         }
@@ -67,6 +67,10 @@ namespace Attendance_APP
                 new AdminMenu(employee).ShowDialog(this);
                 tb_code.Text = "";
                 tb_password.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("管理権限がありません。");
             }
 
         }
