@@ -128,11 +128,11 @@
     <Compile Include="Form\AdminMenu.Designer.cs">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\ForOutput.cs">
+    <Compile Include="Form\OutPutMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\ForOutput.Designer.cs">
-      <DependentUpon>ForOutput.cs</DependentUpon>
+    <Compile Include="Form\OutPutMenu.Designer.cs">
+      <DependentUpon>OutPutMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,8 +167,8 @@
     <EmbeddedResource Include="Form\EditRecord.resx">
       <DependentUpon>EditRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\ForOutput.resx">
-      <DependentUpon>ForOutput.cs</DependentUpon>
+    <EmbeddedResource Include="Form\OutPutMenu.resx">
+      <DependentUpon>OutPutMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

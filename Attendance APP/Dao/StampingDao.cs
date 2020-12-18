@@ -55,6 +55,8 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT ");
             // カラム
+            sql.Append("tbS.createTime, ");
+            sql.Append("tbS.updateTime, ");
             sql.Append("tbD.name, ");
             sql.Append("tbS.id, ");
             sql.Append("tbS.employeeCode, ");

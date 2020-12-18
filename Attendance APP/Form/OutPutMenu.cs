@@ -1,13 +1,14 @@
 ﻿using Attendance_APP.Dao;
 using Attendance_APP.Dto;
+using Attendance_APP.Util;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Attendance_APP.Admin
+namespace Attendance_APP
 {
-    public partial class RecordMenu : Form
+    public partial class OutPutMenu : Form
     {
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
@@ -24,13 +25,11 @@ namespace Attendance_APP.Admin
         public const string title_workingHours = "勤務時間";
         public const string title_remark = "備考";
 
-        public RecordMenu()
+        public OutPutMenu()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            
         }
-
 
         private void SetGredView()
         {
@@ -47,8 +46,6 @@ namespace Attendance_APP.Admin
                 dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["id"].Visible = false;
-                dataGridView1.Columns["createTime"].Visible = false;
-                dataGridView1.Columns["updateTime"].Visible = false;
                 dataGridView1.Columns["stampingCode"].Visible = false;
                 dataGridView1.Columns["name"].HeaderText = title_department;
                 dataGridView1.Columns["employeeCode"].HeaderText = title_employeeCode;
@@ -86,60 +83,28 @@ namespace Attendance_APP.Admin
             return SelectStampings;
         }
 
-
-        private void serch_Click(object sender, EventArgs e)
+        private void outputCsv_Click(object sender, EventArgs e)
         {
-            this.SetGredView();
-        }
-
-        private void edit_Click_1(object sender, EventArgs e)
-        {
-            var selectStampings = this.GetSelectedRecords();
-            if(this.SelectedRows.Count == 1)
+            // 選択された年月日の数値を日付に変換
+            var date1 = cmbDate1.GetSelectedDate();
+            var date2 = cmbDate2.GetSelectedDate();
+            // 期間開始と終了が正しく選択できていれば保存
+            if (date1 < date2)
             {
-                var editRecordForm = new EditRecord(this.Employees[0], selectStampings);
-
-                if (System.Windows.Forms.DialogResult.OK == editRecordForm.ShowDialog())
-                {
-                    this.SetGredView();
-                }
+                // 年月日の数字をSQL期間指定用文字列へ
+                var starPoint = cmbDate1.GetSelectedPoint();
+                var endPoint = cmbDate2.GetSelectedPoint();
+                new OutputFile().SaveFileDialog(cmbEmployee21.GetSelectedEmployeeCodes(), starPoint, endPoint);
             }
             else
             {
-                MessageBox.Show("編集する打刻レコードを1行選択してください。");
+                MessageBox.Show("正しい期間を選択してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private void searchRecord_Click(object sender, EventArgs e)
         {
-
-            var stamping = new StampingDao().SetStampingDto(this.StampingTable);
-            this.SelectedRows = dataGridView1.SelectedRows;
-            string message = "";
-            var selectStampings = this.GetSelectedRecords();
-            if (this.SelectedRows.Count != 0)
-            {
-                foreach(var selectStamping in selectStampings)
-                {
-                    message += "\n" + selectStamping.Attendance.ToString("yyyy/MM/dd");
-                }
-                DialogResult result = MessageBox.Show(message + "のレコードを削除します。", "", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.OK)
-                {
-                    foreach (var selectStamping in selectStampings)
-                    {
-                        new StampingDao().DeleteRecord(selectStamping);
-                    }
-                }
-                this.SetGredView();
-            }
-
-
-        }
-
-        private void NewRecord_Click(object sender, EventArgs e)
-        {
-            new NewRecord().ShowDialog(this);
+            this.SetGredView();
         }
     }
 }

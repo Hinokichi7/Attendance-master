@@ -24,7 +24,7 @@ namespace Attendance_APP
 
         private void Output_Click(object sender, EventArgs e)
         {
-            var csvOutput = new ForOutput();
+            var csvOutput = new OutPutMenu();
             csvOutput.ShowDialog(this);
         }
 
