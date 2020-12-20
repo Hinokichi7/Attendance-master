@@ -111,6 +111,7 @@
     <Compile Include="Contorol\CmbEmployee.Designer.cs">
       <DependentUpon>CmbEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\InputFiles.cs" />
     <Compile Include="Util\SelectEmployee.cs" />
     <Compile Include="Util\WorkingHours.cs" />
     <Compile Include="Dao\DepartmentDao.cs" />
@@ -128,11 +129,11 @@
     <Compile Include="Form\AdminMenu.Designer.cs">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\OutPutMenu.cs">
+    <Compile Include="Form\OutputMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\OutPutMenu.Designer.cs">
-      <DependentUpon>OutPutMenu.cs</DependentUpon>
+    <Compile Include="Form\OutputMenu.Designer.cs">
+      <DependentUpon>OutputMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,8 +168,8 @@
     <EmbeddedResource Include="Form\EditRecord.resx">
       <DependentUpon>EditRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\OutPutMenu.resx">
-      <DependentUpon>OutPutMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Form\OutputMenu.resx">
+      <DependentUpon>OutputMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

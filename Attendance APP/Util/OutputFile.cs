@@ -38,7 +38,7 @@ namespace Attendance_APP.Util
             }
         }
 
-        public void SaveFileDialog(List<int>employeeCodes, string startPoint, string endPoint)
+        public void SaveFileDialog(List<int> ids)
         {
             SaveFileDialog sfd = new SaveFileDialog();
 
@@ -54,8 +54,7 @@ namespace Attendance_APP.Util
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 //OKボタンがクリックされたとき、選択されたファイル名を表示する
-                DataTable stampingTable = new StampingDao().GetSerchedStamping(employeeCodes, startPoint, endPoint);
-                List<StampingDto> Stampinglists = new StampingDao().SetStampingDto(stampingTable);
+                List<StampingDto> Stampinglists = new StampingDao().GetOutputStamping(ids);
                 Console.WriteLine($"{sfd.FileName}{Stampinglists}");
                 this.WriteCsv(sfd.FileName, false, Stampinglists);
             }

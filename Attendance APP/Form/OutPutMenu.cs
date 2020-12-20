@@ -71,16 +71,16 @@ namespace Attendance_APP
             }
         }
 
-        private List<StampingDto> GetSelectedRecords()
+        private List<int> GetStampingId()
         {
-            var stamping = new StampingDao().SetStampingDto(this.StampingTable);
-            this.SelectedRows = dataGridView1.SelectedRows;
-            List<StampingDto> SelectStampings = new List<StampingDto>();
-            for (var i = 0; i < this.SelectedRows.Count; i++)
+            List<int> ids = new List<int>();
+            foreach( DataRow dr in this.StampingTable.Rows)
             {
-                SelectStampings.Add(stamping[this.SelectedRows[i].Index]);
+                int id;
+                id = int.Parse(dr["id"].ToString());
+                ids.Add(id);
             }
-            return SelectStampings;
+            return ids;
         }
 
         private void outputCsv_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace Attendance_APP
                 // 年月日の数字をSQL期間指定用文字列へ
                 var starPoint = cmbDate1.GetSelectedPoint();
                 var endPoint = cmbDate2.GetSelectedPoint();
-                new OutputFile().SaveFileDialog(cmbEmployee21.GetSelectedEmployeeCodes(), starPoint, endPoint);
+                new OutputFile().SaveFileDialog(this.GetStampingId());
             }
             else
             {

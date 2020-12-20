@@ -55,7 +55,7 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT ");
             // カラム
-            sql.Append("tbS.createTime, ");
+            //sql.Append("tbS.createTime, ");
             sql.Append("tbS.updateTime, ");
             sql.Append("tbD.name, ");
             sql.Append("tbS.id, ");
@@ -102,22 +102,27 @@ namespace Attendance_APP.Dao
             }
         }
 
-        public List<StampingDto> GetTermStamping(string startPoint, string endPoint)
+        public List<StampingDto> GetOutputStamping(List<int> ids)
         {
-            // 期間(文字列で指定)データを取得
-            var dt = new DataTable();
-            using (var conn = GetConnection())
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Attendance.dbo.Stamping WHERE attendance BETWEEN @startPoint AND @endPoint", conn))
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT * ");
+            sql.Append("FROM Attendance.dbo.Stamping ");
+            sql.Append("WHERE ");
+            string inValue = string.Join(",", ids);
+            sql.Append("id IN(" + inValue + ")");
+
+            DataTable dt = new DataTable();
+
+            using(SqlConnection conn = GetConnection())
+                using(SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
             {
-                cmd.Parameters.AddWithValue("@startPoint", startPoint);
-                cmd.Parameters.AddWithValue("@endPoint", endPoint);
                 conn.Open();
-                var adapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
+
                 return this.SetStampingDto(dt);
             }
         }
-
 
         public StampingDto GetLatestStamping(int employeeCode)
         {
