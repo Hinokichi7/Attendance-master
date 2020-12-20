@@ -16,11 +16,11 @@ namespace Attendance_APP.Util
     {
         public void WriteCsv(string fileName, bool append, List<StampingDto> Stampinglists)
         {
-            using (StreamWriter sw = new StreamWriter(fileName, append))
+            using (StreamWriter writer = new StreamWriter(fileName, append))
             {
                 Stampinglists.ForEach((StampingDto dto) =>
                 {
-                    sw.WriteLine(
+                    writer.WriteLine(
                         "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}",
                         dto.CreateTime,
                         dto.UpdateTime,
@@ -46,7 +46,7 @@ namespace Attendance_APP.Util
             sfd.InitialDirectory = @"C:\Users\user\Desktop\test";
             sfd.Filter = "TXTファイル|*.txt|CSVファイル|*.csv|すべてのファイル|*.*";
             sfd.FilterIndex = 2;
-            sfd.Title = "保存先のファイルを選択してください";
+            sfd.Title = "保存先を選択してください";
 
 
 

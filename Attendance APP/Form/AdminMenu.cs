@@ -32,5 +32,10 @@ namespace Attendance_APP
         {
             new MasterMenu().ShowDialog(this);
         }
+
+        private void Input_Click(object sender, EventArgs e)
+        {
+            new InputMenu().ShowDialog(this);
+        }
     }
 }
