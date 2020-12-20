@@ -46,6 +46,7 @@ namespace Attendance_APP
                 dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
                 dataGridView1.Columns["id"].Visible = false;
+                dataGridView1.Columns["updateTime"].Visible = false;
                 dataGridView1.Columns["stampingCode"].Visible = false;
                 dataGridView1.Columns["name"].HeaderText = title_department;
                 dataGridView1.Columns["employeeCode"].HeaderText = title_employeeCode;

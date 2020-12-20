@@ -10,11 +10,20 @@ namespace Attendance_APP
 {
     class InputFiles
     {
-        public void ReadCsv(string fileName)
+        public List<string> ReadLines { get; set; } 
+
+        private void ReadCsv(string fileName)
         {
             using(StreamReader reader = new StreamReader(fileName))
             {
-                Console.WriteLine(reader.ReadToEnd());
+                //Console.WriteLine(reader.ReadToEnd());
+                while(reader.EndOfStream == false)
+                {
+                    string line = reader.ReadLine();
+                    //Console.WriteLine(line);
+                    this.ReadLines = new List<string>();
+                    this.ReadLines.Add(line);
+                }
 
             }
         }

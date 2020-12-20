@@ -22,6 +22,7 @@ namespace Attendance_APP.Util
                 {
                     writer.WriteLine(
                         "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}",
+                        dto.Id,
                         dto.CreateTime,
                         dto.UpdateTime,
                         dto.EmployeeCode,
