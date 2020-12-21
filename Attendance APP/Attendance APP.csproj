@@ -111,10 +111,10 @@
     <Compile Include="Contorol\CmbEmployee.Designer.cs">
       <DependentUpon>CmbEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputMenu.cs">
+    <Compile Include="Form\InputMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputMenu.Designer.cs">
+    <Compile Include="Form\InputMenu.Designer.cs">
       <DependentUpon>InputMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\InputFiles.cs" />
@@ -177,7 +177,7 @@
     <EmbeddedResource Include="Form\OutputMenu.resx">
       <DependentUpon>OutputMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputMenu.resx">
+    <EmbeddedResource Include="Form\InputMenu.resx">
       <DependentUpon>InputMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
