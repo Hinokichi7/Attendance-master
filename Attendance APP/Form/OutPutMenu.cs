@@ -11,19 +11,8 @@ namespace Attendance_APP
     public partial class OutPutMenu : Form
     {
         DataTable StampingTable { get; set; }
-        DataGridViewSelectedRowCollection SelectedRows { get; set; }
         List<EmployeeDto> Employees { get; set; }
-        public const string title_department = "部署";
-        public const string title_employeeCode = "社員番号";
-        public const string title_Name = "氏名";
-        public const string title_Year = "年";
-        public const string title_Month = "月";
-        public const string title_Day = "日";
-        public const string title_attendance = "出勤時間";
-        public const string title_leavingWork = "退勤時間";
-        public const string title_stampingName = "勤務種別";
-        public const string title_workingHours = "勤務時間";
-        public const string title_remark = "備考";
+
 
         public OutPutMenu()
         {
@@ -48,17 +37,17 @@ namespace Attendance_APP
                 dataGridView1.Columns["id"].Visible = false;
                 dataGridView1.Columns["updateTime"].Visible = false;
                 dataGridView1.Columns["stampingCode"].Visible = false;
-                dataGridView1.Columns["name"].HeaderText = title_department;
-                dataGridView1.Columns["employeeCode"].HeaderText = title_employeeCode;
-                dataGridView1.Columns["Name1"].HeaderText = title_Name;
-                dataGridView1.Columns["year"].HeaderText = title_Year;
-                dataGridView1.Columns["month"].HeaderText = title_Month;
-                dataGridView1.Columns["day"].HeaderText = title_Day;
-                dataGridView1.Columns["attendance"].HeaderText = title_attendance;
-                dataGridView1.Columns["leavingWork"].HeaderText = title_leavingWork;
-                dataGridView1.Columns["StampingName"].HeaderText = title_stampingName;
-                dataGridView1.Columns["workingHours"].HeaderText = title_workingHours;
-                dataGridView1.Columns["remark"].HeaderText = title_remark;
+                dataGridView1.Columns["name"].HeaderText = Program.title_attendance;
+                dataGridView1.Columns["employeeCode"].HeaderText = Program.title_employeeCode;
+                dataGridView1.Columns["Name1"].HeaderText = Program.title_Name;
+                dataGridView1.Columns["year"].HeaderText = Program.title_Year;
+                dataGridView1.Columns["month"].HeaderText = Program.title_Month;
+                dataGridView1.Columns["day"].HeaderText = Program.title_Day;
+                dataGridView1.Columns["attendance"].HeaderText = Program.title_attendance;
+                dataGridView1.Columns["leavingWork"].HeaderText = Program.title_leavingWork;
+                dataGridView1.Columns["StampingName"].HeaderText = Program.title_stampingName;
+                dataGridView1.Columns["workingHours"].HeaderText = Program.title_workingHours;
+                dataGridView1.Columns["remark"].HeaderText = Program.title_remark;
 
                 // 検索結果0件の場合
                 if (dataGridView1.Rows.Count == 0)

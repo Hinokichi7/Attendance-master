@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Attendance_APP.Dao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Attendance_APP
 {
     public partial class InputMenu : Form
     {
+        DataTable StampingTable { get; set; }
+        DataGridViewSelectedRowCollection SelectedRows { get; set; }
         public InputMenu()
         {
             InitializeComponent();
@@ -21,19 +24,13 @@ namespace Attendance_APP
         private void btn_input_Click(object sender, EventArgs e)
         {
             new InputFiles().OpenFileDialog();
-            this.GetStampingIds2();
         }
 
-        public List<int> GetStampingIds2()
+        public void SetGridView(List<int> ids)
         {
-            List<int> ids = new List<int>();
-            foreach(string line in new InputFiles().ReadLines)
-            {
-                string id = line.Substring(0, 4);
-                Console.WriteLine(id);
-                ids.Add(int.Parse(id));
-            }            
-            return ids;
+            this.StampingTable = new StampingDao().GetInputStamping(ids);
+            dataGridView1.DataSource = this.StampingTable;
         }
+
     }
 }

@@ -55,7 +55,6 @@ namespace Attendance_APP.Dao
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT ");
             // カラム
-            //sql.Append("tbS.createTime, ");
             sql.Append("tbS.updateTime, ");
             sql.Append("tbD.name, ");
             sql.Append("tbS.id, ");
@@ -121,6 +120,55 @@ namespace Attendance_APP.Dao
                 adapter.Fill(dt);
 
                 return this.SetStampingDto(dt);
+            }
+        }
+
+        public DataTable GetInputStamping(List<int> ids)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("SELECT ");
+            // カラム
+            sql.Append("tbS.updateTime, ");
+            sql.Append("tbD.name, ");
+            sql.Append("tbS.id, ");
+            sql.Append("tbS.employeeCode, ");
+            sql.Append("tbE.Name, ");
+            sql.Append("tbS.year, ");
+            sql.Append("tbS.month, ");
+            sql.Append("tbS.day, ");
+            sql.Append("tbS.attendance, ");
+            sql.Append("tbS.leavingWork, ");
+            sql.Append("tbS.stampingCode, ");
+            sql.Append("tbST.stampingName, ");
+            sql.Append("tbS.workingHours, ");
+            sql.Append("tbS.remark ");
+            // テーブル
+            sql.Append("FROM Attendance.dbo.Stamping as tbS, ");
+            sql.Append("Attendance.dbo.StampingType as tbST, ");
+            sql.Append("Attendance.dbo.Employee as tbE, ");
+            sql.Append("Attendance.dbo.Department as tbD ");
+
+            sql.Append("WHERE ");
+            // 条件①:id
+            string inValue = string.Join(",", ids);
+            sql.Append("employeeCode IN(" + inValue + ") ");
+            // 条件③:表示変更
+            sql.Append("AND tbS.employeeCode = tbE.Code ");
+            sql.Append("AND tbE.departmentCode = tbD.Code ");
+            sql.Append("AND tbS.stampingCode = tbST.stampingCode ");
+            // ソート
+            sql.Append("ORDER BY employeeCode, attendance");
+
+
+            // 社員を指定して最新の打刻データを読み込み
+            var dt = new DataTable();
+            using (var conn = GetConnection())
+            using (var cmd = new SqlCommand(sql.ToString(), conn))//using (var conn = GetConnection())を入れ子にしている
+            {
+                conn.Open();
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                return dt;
             }
         }
 
