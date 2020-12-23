@@ -151,7 +151,7 @@ namespace Attendance_APP.Dao
             sql.Append("WHERE ");
             // 条件①:id
             string inValue = string.Join(",", ids);
-            sql.Append("employeeCode IN(" + inValue + ") ");
+            sql.Append("tbS.id IN(" + inValue + ") ");
             // 条件③:表示変更
             sql.Append("AND tbS.employeeCode = tbE.Code ");
             sql.Append("AND tbE.departmentCode = tbD.Code ");

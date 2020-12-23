@@ -10,8 +10,7 @@ namespace Attendance_APP
 {
     class InputFiles
     {
-        public List<string> ReadLines { get; set; }
-        public List<int> Ids { get; set; }
+        public List<string> ReadLines;
 
         private void ReadCsv(string fileName)
         {
@@ -22,12 +21,25 @@ namespace Attendance_APP
                 while(reader.EndOfStream == false)
                 {
                     string line = reader.ReadLine();
-                    Console.WriteLine(line);
                     this.ReadLines.Add(line);
                 }
-                this.SetIds();
+                this.SetReadLines();
             }
         }
+
+        public void SetReadLines()
+        {
+            if (this.ReadLines == null)
+            {
+                Console.WriteLine("error");
+            }
+            else
+            {
+                new InputMenu().SetIds(this.ReadLines);
+            }
+        }
+
+        
         public void OpenFileDialog()
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -42,16 +54,6 @@ namespace Attendance_APP
             }
         }
 
-        private void SetIds()
-        {
-            this.Ids = new List<int>();
-            foreach (string line in this.ReadLines)
-            {
-                string id = line.Substring(0, 4);
-                Console.WriteLine(id);
-                this.Ids.Add(int.Parse(id));
-            }
-            new InputMenu().SetGridView(this.Ids);
-        }
+
     }
 }

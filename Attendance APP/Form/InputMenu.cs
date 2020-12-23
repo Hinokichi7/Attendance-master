@@ -26,11 +26,22 @@ namespace Attendance_APP
             new InputFiles().OpenFileDialog();
         }
 
+        public void SetIds(List<string> readLines)
+        {
+            List<int> ids = new List<int>();
+            foreach (string line in readLines)
+            {
+                string id = line.Substring(0, 4);
+                Console.WriteLine(id);
+                ids.Add(int.Parse(id));
+            }
+            this.SetGridView(ids);
+        }
+
         public void SetGridView(List<int> ids)
         {
             this.StampingTable = new StampingDao().GetInputStamping(ids);
             dataGridView1.DataSource = this.StampingTable;
         }
-
     }
 }
