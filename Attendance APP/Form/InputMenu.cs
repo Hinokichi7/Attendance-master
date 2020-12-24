@@ -52,6 +52,24 @@ namespace Attendance_APP
         {
             this.StampingTable = new StampingDao().GetInputStamping(this.Ids);
             dataGridView1.DataSource = this.StampingTable;
+            //表示設定
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridView1.Columns["attendance"].DefaultCellStyle.Format = "HH:mm";
+            dataGridView1.Columns["leavingWork"].DefaultCellStyle.Format = "HH:mm";
+            dataGridView1.Columns["id"].Visible = false;
+            dataGridView1.Columns["updateTime"].Visible = false;
+            dataGridView1.Columns["stampingCode"].Visible = false;
+            dataGridView1.Columns["name"].HeaderText = Program.title_department;
+            dataGridView1.Columns["employeeCode"].HeaderText = Program.title_employeeCode;
+            dataGridView1.Columns["Name1"].HeaderText = Program.title_Name;
+            dataGridView1.Columns["year"].HeaderText = Program.title_Year;
+            dataGridView1.Columns["month"].HeaderText = Program.title_Month;
+            dataGridView1.Columns["day"].HeaderText = Program.title_Day;
+            dataGridView1.Columns["attendance"].HeaderText = Program.title_attendance;
+            dataGridView1.Columns["leavingWork"].HeaderText = Program.title_leavingWork;
+            dataGridView1.Columns["StampingName"].HeaderText = Program.title_stampingName;
+            dataGridView1.Columns["workingHours"].HeaderText = Program.title_workingHours;
+            dataGridView1.Columns["remark"].HeaderText = Program.title_remark;
         }
     }
 }
