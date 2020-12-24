@@ -15,6 +15,8 @@ namespace Attendance_APP
     {
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
+        List<string> ReadCsv { get; set; }
+        List<int> Ids { get; set; }
         public InputMenu()
         {
             InitializeComponent();
@@ -23,24 +25,32 @@ namespace Attendance_APP
 
         private void btn_input_Click(object sender, EventArgs e)
         {
-            new InputFiles().OpenFileDialog();
+            InputFiles InputFiles = new InputFiles();
+            // CSVファイル読み込み
+            InputFiles.ReadFile();
+            // 読み込んだ文字列のリストを取得
+            this.ReadCsv = InputFiles.GetReadLines();
+            // 文字列のリストからidを取得
+            this.SetIds(this.ReadCsv);
+            // idから一覧をセット
+            this.SetGridView();
         }
 
-        public void SetIds(List<string> readLines)
+        public void SetIds(List<string> readCsv)
         {
             List<int> ids = new List<int>();
-            foreach (string line in readLines)
+            foreach (string line in readCsv)
             {
                 string id = line.Substring(0, 4);
                 Console.WriteLine(id);
                 ids.Add(int.Parse(id));
             }
-            this.SetGridView(ids);
+            this.Ids = ids;
         }
 
-        public void SetGridView(List<int> ids)
+        public void SetGridView()
         {
-            this.StampingTable = new StampingDao().GetInputStamping(ids);
+            this.StampingTable = new StampingDao().GetInputStamping(this.Ids);
             dataGridView1.DataSource = this.StampingTable;
         }
     }
