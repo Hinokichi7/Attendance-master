@@ -22,6 +22,8 @@ namespace Attendance_APP
         {
             InitializeComponent();
             this.SetCmbDepartment();
+            this.SelectedDepartment = new DepartmentDao().GetAllDepartment();
+            this.SetCmbEmployee();
         }
 
         private List<DepartmentDto> GetDepartmentList()
