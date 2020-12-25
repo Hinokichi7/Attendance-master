@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,17 +25,27 @@ namespace Attendance_APP
         // ID・パスワード照合
         private EmployeeDto GetEmployee()
         {
+            Regex pattarn = new Regex(@"[0-9]{3}");
+            var match = pattarn.IsMatch(tb_code.Text);
             try
             {
-                int code = int.Parse(tb_code.Text);
-                EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(code);
-                if(employee.Password == tb_password.Text)
+                if (pattarn.IsMatch(tb_code.Text))
                 {
-                    return employee;
+                    int code = int.Parse(tb_code.Text);
+                    EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(code);
+                    if(employee.Password == tb_password.Text)
+                    {
+                        return employee;
+                    }
+                    else
+                    {
+                        MessageBox.Show("IDかパスワードが正しくありません。");
+                        return null;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("IDかパスワードが正しくありません。");
+                    MessageBox.Show("半角数字で3桁で入力してください。");
                     return null;
                 }
             }

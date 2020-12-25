@@ -92,7 +92,6 @@
             this.tb_code.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tb_code.Location = new System.Drawing.Point(93, 81);
             this.tb_code.Name = "tb_code";
-            this.tb_code.PasswordChar = '*';
             this.tb_code.Size = new System.Drawing.Size(150, 24);
             this.tb_code.TabIndex = 4;
             // 
