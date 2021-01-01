@@ -25,23 +25,30 @@ namespace Attendance_APP
         // ID・パスワード照合
         private EmployeeDto GetEmployee()
         {
-            Regex pattarn = new Regex(@"[0-9]{3}");
-            var match = pattarn.IsMatch(tb_code.Text);
             try
             {
-                if (pattarn.IsMatch(tb_code.Text))
+                if (Program.id_pattarn.IsMatch(tb_code.Text))
                 {
                     int code = int.Parse(tb_code.Text);
                     EmployeeDto employee = new EmployeeDao().GetSelectedEmployee(code);
-                    if(employee.Password == tb_password.Text)
+                    if (Program.password_pattern.IsMatch(tb_password.Text))
                     {
-                        return employee;
+                        if (employee.Password == tb_password.Text)
+                        {
+                            return employee;
+                        }
+                        else
+                        {
+                            MessageBox.Show("IDかパスワードが正しくありません。");
+                            return null;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("IDかパスワードが正しくありません。");
+                        MessageBox.Show("3文字以上の半角英数字で入力してください。");
                         return null;
                     }
+
                 }
                 else
                 {
@@ -79,11 +86,10 @@ namespace Attendance_APP
                 tb_code.Text = "";
                 tb_password.Text = "";
             }
-            else
+            else if(employee != null && employee.AdminFlug == 0)
             {
                 MessageBox.Show("管理権限がありません。");
             }
-
         }
     }
 }

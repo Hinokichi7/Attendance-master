@@ -37,17 +37,17 @@ namespace Attendance_APP
                 dataGridView1.Columns["id"].Visible = false;
                 dataGridView1.Columns["updateTime"].Visible = false;
                 dataGridView1.Columns["stampingCode"].Visible = false;
-                dataGridView1.Columns["name"].HeaderText = Program.title_attendance;
-                dataGridView1.Columns["employeeCode"].HeaderText = Program.title_employeeCode;
-                dataGridView1.Columns["Name1"].HeaderText = Program.title_Name;
-                dataGridView1.Columns["year"].HeaderText = Program.title_Year;
-                dataGridView1.Columns["month"].HeaderText = Program.title_Month;
-                dataGridView1.Columns["day"].HeaderText = Program.title_Day;
-                dataGridView1.Columns["attendance"].HeaderText = Program.title_attendance;
-                dataGridView1.Columns["leavingWork"].HeaderText = Program.title_leavingWork;
-                dataGridView1.Columns["StampingName"].HeaderText = Program.title_stampingName;
-                dataGridView1.Columns["workingHours"].HeaderText = Program.title_workingHours;
-                dataGridView1.Columns["remark"].HeaderText = Program.title_remark;
+                dataGridView1.Columns["name"].HeaderText = Program.header_attendance;
+                dataGridView1.Columns["employeeCode"].HeaderText = Program.header_employeeCode;
+                dataGridView1.Columns["Name1"].HeaderText = Program.header_Name;
+                dataGridView1.Columns["year"].HeaderText = Program.header_Year;
+                dataGridView1.Columns["month"].HeaderText = Program.header_Month;
+                dataGridView1.Columns["day"].HeaderText = Program.header_Day;
+                dataGridView1.Columns["attendance"].HeaderText = Program.header_attendance;
+                dataGridView1.Columns["leavingWork"].HeaderText = Program.header_leavingWork;
+                dataGridView1.Columns["StampingName"].HeaderText = Program.header_stampingName;
+                dataGridView1.Columns["workingHours"].HeaderText = Program.header_workingHours;
+                dataGridView1.Columns["remark"].HeaderText = Program.header_remark;
 
                 // 検索結果0件の場合
                 if (dataGridView1.Rows.Count == 0)
