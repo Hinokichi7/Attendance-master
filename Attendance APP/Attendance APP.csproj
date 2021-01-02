@@ -117,6 +117,7 @@
     <Compile Include="Form\InputMenu.Designer.cs">
       <DependentUpon>InputMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dto\TableDto.cs" />
     <Compile Include="Util\InputFiles.cs" />
     <Compile Include="Util\SelectEmployee.cs" />
     <Compile Include="Util\WorkingHours.cs" />
