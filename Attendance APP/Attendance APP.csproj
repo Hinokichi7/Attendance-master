@@ -51,7 +51,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DtoKeys.cs" />
+    <Compile Include="Util\DtoKeys.cs" />
+    <Compile Include="Util\Dtos.cs" />
     <Compile Include="Form\MasterMenu.cs">
       <SubType>Form</SubType>
     </Compile>
