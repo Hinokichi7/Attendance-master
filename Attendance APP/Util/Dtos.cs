@@ -21,7 +21,7 @@ namespace Attendance_APP
                 new DtoKeys(5, "TableDto"),
             };
 
-            this.DtoDic = new Dictionary<DtoKeys, List<string>>();
+            this.DtoDic = new Dictionary<DtoKeys, string>();
 
             foreach(DtoKeys dtoKey in dtoKeys)
             {
@@ -30,7 +30,7 @@ namespace Attendance_APP
                     continue;
                 }
 
-                DtoDic.Add(dtoKey, List<string>);
+                DtoDic.Add(dtoKey, "");
             }
         }
 
