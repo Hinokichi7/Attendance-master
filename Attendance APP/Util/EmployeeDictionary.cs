@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Attendance_APP.Dao;
+using Attendance_APP.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,7 @@ namespace Attendance_APP
 
         public EmployeeDictionary()
         {
-            List<EmployeeKeys> dtoKeys = new List<EmployeeKeys>()
+            List<EmployeeKeys> employeeKeys = new List<EmployeeKeys>()
             {
                 new EmployeeKeys(1, "岡崎 誠", 1,"aaa", 1),
                 new EmployeeKeys(2, "永瀬 昌利", 2, "bbb", 0),
@@ -20,16 +22,18 @@ namespace Attendance_APP
 
             };
 
+            List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
+
             this.EmployeeDic = new Dictionary<EmployeeKeys, string>();
 
-            foreach(EmployeeKeys dtoKey in dtoKeys)
+            foreach(EmployeeKeys employeeKey in employeeKeys)
             {
-                if (EmployeeDic.ContainsKey(dtoKey))
+                if (EmployeeDic.ContainsKey(employeeKey))
                 {
                     continue;
                 }
 
-                EmployeeDic.Add(dtoKey, "");
+                EmployeeDic.Add(employeeKey, "");
             }
         }
 
