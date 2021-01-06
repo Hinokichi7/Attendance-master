@@ -30,8 +30,8 @@ namespace Attendance_APP
 
         private void EditMaester_Click(object sender, EventArgs e)
         {
-            new MasterMenu().ShowDialog(this);
             new EmployeeDictionary().xxx();
+            new MasterMenu().ShowDialog(this);
         }
 
         private void Input_Click(object sender, EventArgs e)

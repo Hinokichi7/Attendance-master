@@ -24,27 +24,19 @@ namespace Attendance_APP
 
             List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
 
-            this.EmployeeDic = new Dictionary<EmployeeKeys, EmployeeDto>();
-
-            //foreach(EmployeeKeys employeeKey in employeeKeys)
-            //{
-            //    if (EmployeeDic.ContainsKey(employeeKey))
-            //    {
-            //        continue;
-            //    }
-
-            //    EmployeeDic.Add(employeeKey, employees);
-            //}
-            EmployeeDic.Add(employeeKeys[0], employees[0]);
-            EmployeeDic.Add(employeeKeys[1], employees[1]);
-            EmployeeDic.Add(employeeKeys[2], employees[2]);
+            this.EmployeeDic = new Dictionary<EmployeeKeys, EmployeeDto>()
+            {
+                { employeeKeys[0], employees[0] },
+                { employeeKeys[1], employees[1] },
+                { employeeKeys[2], employees[2]},
+            };
         }
 
         public void xxx()
         {
-            foreach (EmployeeKeys key in EmployeeDic.Keys)
+            foreach (KeyValuePair<EmployeeKeys, EmployeeDto> dic in EmployeeDic)
             {
-                Console.WriteLine($"{key}:{EmployeeDic[key]}");
+                Console.WriteLine($"{dic.Key}:{dic.Value}");
             }
         }
     }
