@@ -31,19 +31,12 @@ namespace Attendance_APP
 
             List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
 
-            this.EmployeeDic = new Dictionary<EmployeeKeys, EmployeeDto>()
+
+            this.EmployeeDic = new Dictionary<EmployeeKeys, EmployeeDto>();
+            for(int i = 0; i < employeeKeys.Count; i++)
             {
-                { employeeKeys[0], employees[0] },
-                { employeeKeys[1], employees[1] },
-                { employeeKeys[2], employees[2]},
-                { employeeKeys[3], employees[3]},
-                { employeeKeys[4], employees[4]},
-                { employeeKeys[5], employees[5]},
-                { employeeKeys[6], employees[6]},
-                { employeeKeys[7], employees[7]},
-                { employeeKeys[8], employees[8]},
-                { employeeKeys[9], employees[9]},
-            };
+                EmployeeDic[employeeKeys[i]] = employees[i];
+            }
         }
 
         public void xxx()
