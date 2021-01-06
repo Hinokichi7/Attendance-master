@@ -10,7 +10,7 @@ namespace Attendance_APP
 {
     class EmployeeDictionary
     {
-        public Dictionary<EmployeeKeys, string> EmployeeDic;
+        public Dictionary<EmployeeKeys, EmployeeDto> EmployeeDic;
 
         public EmployeeDictionary()
         {
@@ -24,17 +24,20 @@ namespace Attendance_APP
 
             List<EmployeeDto> employees = new EmployeeDao().GetAllEmployee();
 
-            this.EmployeeDic = new Dictionary<EmployeeKeys, string>();
+            this.EmployeeDic = new Dictionary<EmployeeKeys, EmployeeDto>();
 
-            foreach(EmployeeKeys employeeKey in employeeKeys)
-            {
-                if (EmployeeDic.ContainsKey(employeeKey))
-                {
-                    continue;
-                }
+            //foreach(EmployeeKeys employeeKey in employeeKeys)
+            //{
+            //    if (EmployeeDic.ContainsKey(employeeKey))
+            //    {
+            //        continue;
+            //    }
 
-                EmployeeDic.Add(employeeKey, "");
-            }
+            //    EmployeeDic.Add(employeeKey, employees);
+            //}
+            EmployeeDic.Add(employeeKeys[0], employees[0]);
+            EmployeeDic.Add(employeeKeys[1], employees[1]);
+            EmployeeDic.Add(employeeKeys[2], employees[2]);
         }
 
         public void xxx()
