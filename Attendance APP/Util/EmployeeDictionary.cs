@@ -24,6 +24,8 @@ namespace Attendance_APP
                 new EmployeeKeys(6, "末永 好男", 1, "fff", 1),
                 new EmployeeKeys(7, "尾上 千尋", 2, "ggg", 0),
                 new EmployeeKeys(8, "大槻 龍宏", 3, "hhh", 0),
+                new EmployeeKeys(9, "小俣 哲", 4, "iii", 0),
+                new EmployeeKeys(10, "石倉 菜那", 5, "ggg", 0),
 
             };
 
@@ -41,7 +43,6 @@ namespace Attendance_APP
                 { employeeKeys[7], employees[7]},
                 { employeeKeys[8], employees[8]},
                 { employeeKeys[9], employees[9]},
-                { employeeKeys[10], employees[10]},
             };
         }
 
