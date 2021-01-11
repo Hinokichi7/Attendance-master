@@ -11,14 +11,14 @@ namespace Attendance_APP.Admin
     {
         DataTable StampingTable { get; set; }
         DataGridViewSelectedRowCollection SelectedRows { get; set; }
+        Dictionary<string, StampingTable> TableDic;
         List<EmployeeDto> Employees { get; set; }
 
 
         public RecordMenu()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-            
+            this.StartPosition = FormStartPosition.CenterScreen;           
         }
 
 
@@ -74,6 +74,11 @@ namespace Attendance_APP.Admin
             }
             return SelectStampings;
         }
+
+        // 選択したレコードを連想配列に格納
+
+
+
 
 
         private void serch_Click(object sender, EventArgs e)
